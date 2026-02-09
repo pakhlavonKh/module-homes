@@ -9,21 +9,20 @@ const ContactSection = () => {
     {
       icon: Phone,
       label: t.contact.phone,
-      value: "+998 99 958 50 50",
-      subValue: "+998 77 294 52 52",
+      value: "+998 71 200 5051",
       href: "tel:+998999585050",
     },
     {
       icon: Globe,
       label: t.contact.website,
       value: "modulbino.uz",
-      href: "https://modulbino.uz",
+      href: "https://module-homes.netlify.app/",
     },
     {
       icon: Instagram,
       label: t.contact.instagram,
       value: "@modul_bino",
-      href: "https://instagram.com/modul_bino",
+      href: "https://www.instagram.com/modul_bino/",
     },
     {
       icon: MapPin,
@@ -71,9 +70,6 @@ const ContactSection = () => {
                   {item.label}
                 </h3>
                 <p className="text-sm text-muted-foreground">{item.value}</p>
-                {item.subValue && (
-                  <p className="text-sm text-muted-foreground">{item.subValue}</p>
-                )}
               </motion.a>
             ))}
           </div>

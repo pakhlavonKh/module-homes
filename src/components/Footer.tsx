@@ -1,5 +1,5 @@
 import { useLanguage } from "@/context/LanguageContext";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -11,7 +11,7 @@ const Footer = () => {
           <img
             src={logo}
             alt="MODUL BINO"
-            className="h-10 w-auto brightness-0 invert opacity-90"
+            className="h-10 w-auto"
           />
         </div>
         <p className="text-primary-foreground/80 text-sm font-medium mb-2">
