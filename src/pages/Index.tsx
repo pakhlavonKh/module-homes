@@ -5,9 +5,12 @@ import ProductsSection from "@/components/ProductsSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import { useSEO } from "@/hooks/useSEO";
 
-const Index = () => (
-  <LanguageProvider>
+const IndexContent = () => {
+  useSEO();
+  
+  return (
     <div className="min-h-screen bg-background">
       <Header />
       <HeroSection />
@@ -16,6 +19,12 @@ const Index = () => (
       <ContactSection />
       <Footer />
     </div>
+  );
+};
+
+const Index = () => (
+  <LanguageProvider>
+    <IndexContent />
   </LanguageProvider>
 );
 
