@@ -4,10 +4,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 import logo from "@/assets/logo.png";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [phoneOpen, setPhoneOpen] = useState(false);
   const { t } = useLanguage();
+
+  const phoneNumbers = [
+    { number: "+998 99 863 5050", link: "tel:+998998635050" },
+    { number: "+998 71 200 5051", link: "tel:+998712005051" },
+  ];
 
   const navLinks = [
     { label: t.nav.home, href: "#hero" },
@@ -34,13 +45,32 @@ const Header = () => {
             </a>
           ))}
           <LanguageSwitcher />
-          <a
-            href="tel:+998999585050"
-            className="hero-gradient text-primary-foreground px-5 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity"
-          >
-            <Phone className="w-4 h-4" />
-            {t.nav.callUs}
-          </a>
+          <HoverCard>
+            <HoverCardTrigger asChild>
+              <button className="hero-gradient text-primary-foreground px-5 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity cursor-pointer">
+                <Phone className="w-4 h-4" />
+                {t.nav.callUs}
+              </button>
+            </HoverCardTrigger>
+            <HoverCardContent className="w-56">
+              <div className="space-y-3">
+                <p className="text-sm font-semibold text-foreground">
+                  {t.nav.callUs}
+                </p>
+                <div className="space-y-2">
+                  {phoneNumbers.map((phone) => (
+                    <a
+                      key={phone.number}
+                      href={phone.link}
+                      className="block text-sm text-accent hover:text-primary font-medium transition-colors"
+                    >
+                      {phone.number}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </HoverCardContent>
+          </HoverCard>
         </nav>
 
         <div className="flex items-center gap-3 lg:hidden">
@@ -73,13 +103,26 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <a
-                href="tel:+998999585050"
-                className="hero-gradient text-primary-foreground px-5 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 justify-center"
+              <button
+                onClick={() => setPhoneOpen(!phoneOpen)}
+                className="hero-gradient text-primary-foreground px-5 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 justify-center w-full"
               >
                 <Phone className="w-4 h-4" />
                 {t.nav.callUs}
-              </a>
+              </button>
+              {phoneOpen && (
+                <div className="bg-muted/30 rounded-lg p-3 space-y-2 border border-border">
+                  {phoneNumbers.map((phone) => (
+                    <a
+                      key={phone.number}
+                      href={phone.link}
+                      className="block text-sm text-accent hover:text-primary font-medium transition-colors text-center py-2"
+                    >
+                      {phone.number}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           </motion.div>
         )}

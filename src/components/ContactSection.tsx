@@ -9,8 +9,10 @@ const ContactSection = () => {
     {
       icon: Phone,
       label: t.contact.phone,
-      value: "+998 71 200 5051",
-      href: "tel:+998999585050",
+      phones: [
+        { number: "+998 99 863 5050", href: "tel:+998998635050" },
+        { number: "+998 71 200 5051", href: "tel:+998712005051" },
+      ],
     },
     {
       icon: Globe,
@@ -52,11 +54,8 @@ const ContactSection = () => {
         <div className="max-w-4xl mx-auto">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactItems.map((item, i) => (
-              <motion.a
+              <motion.div
                 key={item.label}
-                href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -69,8 +68,29 @@ const ContactSection = () => {
                 <h3 className="font-heading font-bold text-foreground mb-1 text-sm">
                   {item.label}
                 </h3>
-                <p className="text-sm text-muted-foreground">{item.value}</p>
-              </motion.a>
+                {item.phones ? (
+                  <div className="space-y-2">
+                    {item.phones.map((phone) => (
+                      <a
+                        key={phone.number}
+                        href={phone.href}
+                        className="block text-sm text-muted-foreground hover:text-accent transition-colors"
+                      >
+                        {phone.number}
+                      </a>
+                    ))}
+                  </div>
+                ) : (
+                  <a
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                  >
+                    <p>{item.value}</p>
+                  </a>
+                )}
+              </motion.div>
             ))}
           </div>
         </div>
