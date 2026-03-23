@@ -3,7 +3,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import {
   HoverCard,
   HoverCardContent,

@@ -14,7 +14,29 @@ export default defineConfig(({ mode }) => ({
   plugins: [react()].filter(Boolean),
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "src"),
     },
+  },
+  build: {
+    minify: "terser",
+    terserOptions: {
+      compress: {
+        drop_console: true,
+      },
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          radixUi: [
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-dropdown-menu",
+            "@radix-ui/react-accordion",
+            "@radix-ui/react-tabs",
+          ],
+          vendor: ["react", "react-dom", "react-router-dom"],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
   },
 }));

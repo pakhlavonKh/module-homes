@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import ProductCard from "./ProductCard";
 
-import mobileHome from "@/assets/mobile.jpg";
-import oneStory from "@/assets/one-story.jpg";
-import twoStory from "@/assets/two-story.jpg";
-import office from "@/assets/office.jpg";
-import industrial from "@/assets/industrial.jpg";
-import sanuzel from "@/assets/sanuzel.jpg";
+import mobileHome from "@/assets/mobile.webp";
+import oneStory from "@/assets/one-story.webp";
+import twoStory from "@/assets/two-story.webp";
+import office from "@/assets/office.webp";
+import industrial from "@/assets/industrial.webp";
+import sanuzel from "@/assets/sanuzel.webp";
 
 const productImages = [mobileHome, oneStory, twoStory, office, industrial, sanuzel];
 

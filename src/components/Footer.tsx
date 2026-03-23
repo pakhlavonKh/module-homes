@@ -1,5 +1,5 @@
 import { useLanguage } from "@/context/LanguageContext";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 
 const Footer = () => {
   const { t } = useLanguage();

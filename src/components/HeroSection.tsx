@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import heroImg from "@/assets/hero-1.jpg";
+import heroImg from "@/assets/hero-1.webp";
 
 const HeroSection = () => {
   const { t } = useLanguage();
