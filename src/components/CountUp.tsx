@@ -22,11 +22,11 @@ const CountUp = ({
   end,
   suffix = "",
   prefix = "",
-  duration = 1.8,
+  duration = 1.0,
   className = "",
 }: CountUpProps) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const isInView = useInView(ref, { once: true, margin: "50px" });
   const [count, setCount] = useState(0);
   const rafRef = useRef<number | null>(null);
 

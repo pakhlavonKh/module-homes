@@ -2,11 +2,12 @@ import type { TranslationType } from "@/lib/i18n";
 
 export const en: TranslationType = {
   seo: {
-    title: "Modul Bino — Modern Modular Construction",
+    title: "Modul Bino — Modern Modular Construction | Tashkent, Uzbekistan",
     description:
-      "Mobile homes, office buildings, industrial facilities, and prefabricated bathroom units — fast, quality, and affordable. Contact Modul Bino today.",
-    keywords: "modular construction, mobile homes, office buildings, industrial buildings, metal structures",
-    image: "/og-image-en.png",
+      "Modern prefabricated modular homes, mobile office cabins, industrial buildings, and prefabricated bathroom units in Uzbekistan. Fast 2-4 week construction with up to 10-year warranty.",
+    keywords:
+      "modular construction uzbekistan, prefabricated homes tashkent, modular buildings, mobile office containers, industrial metal buildings, prefabricated bathrooms",
+    image: "/favi.png",
   },
   nav: {
     home: "Home",
@@ -85,6 +86,7 @@ export const en: TranslationType = {
   contact: {
     badge: "Contact",
     title: "Get in Touch",
+    subtitle: "Choose your preferred channel to connect with us.",
     phone: "Phone",
     email: "Email",
     address: "Address",

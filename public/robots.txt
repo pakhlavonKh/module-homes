@@ -1,14 +1,8 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: *
 Allow: /
+
+# Disallow sensitive or build files if any
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://modulbino.uz/sitemap.xml

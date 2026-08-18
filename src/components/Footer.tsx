@@ -34,7 +34,7 @@ const Footer = () => {
         }}
       />
 
-      <div className="container relative z-10">
+      <div className="container max-w-6xl relative z-10">
         {/* Compact Light Pre-footer CTA Card with readable font */}
         <div className="relative bg-card text-foreground rounded-2xl p-5 md:p-6 mb-6 card-shadow border border-border overflow-hidden">
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-5">
@@ -73,11 +73,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-6 border-b border-primary-foreground/20">
           {/* Col 1: Brand Info (5 cols) */}
           <div className="lg:col-span-5 space-y-3">
-            <a href="#hero" className="inline-block group">
+            <a href="#hero" aria-label="Modul Bino — Bosh sahifa" className="inline-block group">
               <img
                 src={logo}
-                alt="MODUL BINO"
+                alt="Modul Bino — Zamonaviy Modul Qurilish"
                 className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+                width="140"
+                height="40"
+                loading="lazy"
+                decoding="async"
               />
             </a>
             <p className="text-primary-foreground/85 text-sm leading-relaxed max-w-sm font-normal">

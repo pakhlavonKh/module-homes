@@ -1,116 +1,112 @@
-import { motion } from "framer-motion";
 import { Phone, MapPin, Globe, Instagram, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 const ContactSection = () => {
   const { t } = useLanguage();
 
-  const contactItems = [
-    {
-      icon: Phone,
-      label: t.contact.phone,
-      phones: [
-        { number: "+998 99 863 5050", href: "tel:+998998635050" },
-        { number: "+998 71 200 5051", href: "tel:+998712005051" },
-      ],
-    },
-    {
-      icon: Globe,
-      label: t.contact.website,
-      value: "modulbino.uz",
-      href: "https://module-homes.netlify.app/",
-    },
-    {
-      icon: Instagram,
-      label: t.contact.instagram,
-      value: "@modul_bino",
-      href: "https://www.instagram.com/modul_bino/",
-    },
-    {
-      icon: MapPin,
-      label: t.contact.address,
-      value: t.contact.addressValue,
-      href: "#",
-    },
-  ];
-
   return (
-    <section id="contact" className="py-24 md:py-32 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 dot-pattern opacity-40" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] hero-gradient opacity-[0.05] rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
+    <section id="contact" className="py-10 md:py-16 bg-background relative overflow-hidden">
+      {/* Subtle background texture */}
+      <div className="absolute inset-0 dot-pattern opacity-30 pointer-events-none" />
 
-      <div className="container relative">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="inline-flex items-center gap-2 text-accent font-semibold text-xs uppercase tracking-[0.2em] mb-4">
-            <span className="w-6 h-px bg-accent inline-block" />
-            {t.contact.badge}
-            <span className="w-6 h-px bg-accent inline-block" />
-          </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-foreground mt-2 tracking-tight">
+      <div className="container relative z-10">
+        {/* Refined Minimalist Header */}
+        <div className="text-center mb-6 md:mb-10">
+          <div className="inline-flex items-center gap-3 text-accent font-semibold text-xs uppercase tracking-[0.25em] mb-4">
+            <span className="w-8 h-px bg-accent/60 inline-block" />
+            <span>{t.contact.badge}</span>
+            <span className="w-8 h-px bg-accent/60 inline-block" />
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-[2.6rem] font-heading font-bold text-foreground tracking-tight leading-tight">
             {t.contact.title}
           </h2>
-        </motion.div>
+          <p className="text-muted-foreground text-sm md:text-base max-w-md mx-auto mt-3 font-normal leading-relaxed">
+            {t.contact.subtitle}
+          </p>
+        </div>
 
-        <div className="max-w-5xl mx-auto">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {contactItems.map((item, i) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                className="group bg-card rounded-2xl p-6 card-shadow hover:card-hover-shadow transition-all duration-400 text-center border border-border/50 hover:border-primary/20 hover:-translate-y-1.5 relative overflow-hidden"
-              >
-                {/* Gradient bg on hover */}
-                <div className="absolute inset-0 hero-gradient opacity-0 group-hover:opacity-[0.04] transition-opacity duration-400" />
-
-                {/* Icon */}
-                <div className="relative w-14 h-14 mx-auto mb-4">
-                  <div className="absolute inset-0 hero-gradient rounded-2xl opacity-20 group-hover:opacity-35 blur-lg transition-all duration-300" />
-                  <div className="relative w-14 h-14 hero-gradient rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <item.icon className="w-6 h-6 text-primary-foreground" />
-                  </div>
+        {/* Unified 2×2 Architectural Contact Panel */}
+        <div className="max-w-4xl mx-auto bg-card rounded-2xl md:rounded-3xl border border-border/80 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.04),0_1px_2px_rgba(0,0,0,0.02)] overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 divide-border/70">
+            {/* Quadrant 1: Telefon */}
+            <div className="p-6 md:p-8 lg:p-10 md:border-r md:border-b border-border/70 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2.5 text-muted-foreground mb-4">
+                  <Phone className="w-4 h-4 text-accent stroke-[1.75] flex-shrink-0" />
+                  <span className="text-xs font-semibold uppercase tracking-wider">{t.contact.phone}</span>
                 </div>
-
-                <h3 className="font-heading font-bold text-foreground mb-2 text-sm tracking-wide">
-                  {item.label}
-                </h3>
-
-                {item.phones ? (
-                  <div className="space-y-1.5">
-                    {item.phones.map((phone) => (
-                      <a
-                        key={phone.number}
-                        href={phone.href}
-                        className="block text-sm text-muted-foreground hover:text-accent transition-colors font-medium"
-                      >
-                        {phone.number}
-                      </a>
-                    ))}
-                  </div>
-                ) : (
+                <div className="space-y-2">
                   <a
-                    href={item.href}
-                    target={item.href?.startsWith("http") ? "_blank" : undefined}
-                    rel={item.href?.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-accent transition-colors font-medium group/link"
+                    href="tel:+998998635050"
+                    className="block font-heading font-semibold text-lg md:text-xl text-foreground hover:text-accent transition-colors duration-200 tracking-tight"
                   >
-                    <span>{item.value}</span>
-                    {item.href?.startsWith("http") && (
-                      <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover/link:opacity-100 -translate-x-1 group-hover/link:translate-x-0 transition-all duration-200" />
-                    )}
+                    +998 99 863 5050
                   </a>
-                )}
-              </motion.div>
-            ))}
+                  <a
+                    href="tel:+998712005051"
+                    className="block font-heading font-semibold text-lg md:text-xl text-foreground hover:text-accent transition-colors duration-200 tracking-tight"
+                  >
+                    +998 71 200 5051
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Quadrant 2: Instagram */}
+            <a
+              href="https://www.instagram.com/modul_bino/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group p-6 md:p-8 lg:p-10 md:border-b border-border/70 flex flex-col justify-between transition-colors duration-200 hover:bg-muted/25"
+            >
+              <div>
+                <div className="flex items-center justify-between text-muted-foreground mb-4">
+                  <div className="flex items-center gap-2.5">
+                    <Instagram className="w-4 h-4 text-accent stroke-[1.75] flex-shrink-0" />
+                    <span className="text-xs font-semibold uppercase tracking-wider">{t.contact.instagram}</span>
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-muted-foreground/60 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
+                </div>
+                <div className="font-heading font-semibold text-lg md:text-xl text-foreground group-hover:text-accent transition-colors duration-200 tracking-tight">
+                  @modul_bino
+                </div>
+              </div>
+            </a>
+
+            {/* Quadrant 3: Veb-sayt */}
+            <a
+              href="https://module-homes.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group p-6 md:p-8 lg:p-10 md:border-r border-border/70 flex flex-col justify-between transition-colors duration-200 hover:bg-muted/25"
+            >
+              <div>
+                <div className="flex items-center justify-between text-muted-foreground mb-4">
+                  <div className="flex items-center gap-2.5">
+                    <Globe className="w-4 h-4 text-accent stroke-[1.75] flex-shrink-0" />
+                    <span className="text-xs font-semibold uppercase tracking-wider">{t.contact.website}</span>
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-muted-foreground/60 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
+                </div>
+                <div className="font-heading font-semibold text-lg md:text-xl text-foreground group-hover:text-accent transition-colors duration-200 tracking-tight">
+                  modulbino.uz
+                </div>
+              </div>
+            </a>
+
+            {/* Quadrant 4: Manzil */}
+            <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2.5 text-muted-foreground mb-4">
+                  <MapPin className="w-4 h-4 text-accent stroke-[1.75] flex-shrink-0" />
+                  <span className="text-xs font-semibold uppercase tracking-wider">{t.contact.address}</span>
+                </div>
+                <div className="font-heading font-semibold text-lg md:text-xl text-foreground leading-snug tracking-tight">
+                  <p>Shayhontohur tumani,</p>
+                  <p className="text-muted-foreground font-medium text-base md:text-lg mt-0.5">Jangoh dahasi, 2</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

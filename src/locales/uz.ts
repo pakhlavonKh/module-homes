@@ -2,11 +2,12 @@ import type { TranslationType } from "@/lib/i18n";
 
 export const uz: TranslationType = {
   seo: {
-    title: "Modul Bino — Zamonaviy Modul Qurilish",
+    title: "Modul Bino — Zamonaviy Modul Qurilish | Toshkent, O'zbekiston",
     description:
-      "Ko'chma uylar, ofis binolari, sanoat inshootlari va modul sanuzllar — tez, sifatli va arzon narxlarda. Modul Bino bilan bog'laning.",
-    keywords: "modul qurilish, ko'chma uylar, ofis binolari, sanoat inshootlari, metall konstruksiya",
-    image: "/og-image-uz.png",
+      "O'zbekistonda zamonaviy modul uylar, ko'chma ofislar, sanoat inshootlari va tayyor modul sanuzllar. Tez qurilish (2-4 hafta), 10 yilgacha kafolat va hamyonbop narxlar.",
+    keywords:
+      "modul qurilish, modul bino, ko'chma uylar, modul ofis, metall konstruksiya, sanoat binolari, modul sanuzel, modul uylar narxi toshkent",
+    image: "/favi.png",
   },
   nav: {
     home: "Bosh sahifa",
@@ -85,10 +86,11 @@ export const uz: TranslationType = {
   contact: {
     badge: "Aloqa",
     title: "Biz bilan bog'laning",
+    subtitle: "Siz uchun qulay aloqa kanalini tanlang.",
     phone: "Telefon",
     email: "Email",
     address: "Manzil",
-    addressValue: "Shayhontohur tumani, Jangoh dahasi,2",
+    addressValue: "Shayhontohur tumani, Jangoh dahasi, 2",
     instagram: "Instagram",
     website: "Veb-sayt",
   },

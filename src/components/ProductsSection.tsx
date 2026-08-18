@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import ProductCard from "./ProductCard";
 
@@ -16,32 +15,26 @@ const ProductsSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="products" className="py-24 md:py-32 relative">
+    <section id="products" className="py-16 md:py-24 relative">
       {/* Subtle top divider */}
       <div className="section-divider mb-0" />
 
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="inline-flex items-center gap-2 text-accent font-semibold text-xs uppercase tracking-[0.2em] mb-4">
+      <div className="container max-w-6xl">
+        <div className="text-center mb-10 md:mb-12">
+          <span className="inline-flex items-center gap-2 text-accent font-semibold text-xs uppercase tracking-[0.2em] mb-3">
             <span className="w-6 h-px bg-accent inline-block" />
             {t.products.badge}
             <span className="w-6 h-px bg-accent inline-block" />
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black text-foreground mt-2 tracking-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-[2.5rem] font-heading font-black text-foreground mt-1 tracking-tight">
             {t.products.title}
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-lg mx-auto text-base leading-relaxed">
+          <p className="text-muted-foreground mt-2.5 max-w-lg mx-auto text-sm md:text-base leading-relaxed">
             Har qanday ehtiyoj uchun zamonaviy modul binolar
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {t.products.items.map((product, i) => (
             <ProductCard
               key={product.title}

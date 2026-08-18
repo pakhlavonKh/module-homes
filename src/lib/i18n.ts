@@ -44,6 +44,7 @@ export type TranslationType = {
   contact: {
     badge: string;
     title: string;
+    subtitle: string;
     phone: string;
     email: string;
     address: string;

@@ -3,49 +3,208 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Dynamic title updated based on selected language via useSEO hook -->
-    <title>Modul Bino — Zamonaviy Modul Qurilish</title>
-    <meta name="description" content="Ko'chma uylar, ofis binolari, sanoat inshootlari va modul sanuzllar — tez, sifatli va arzon narxlarda." />
-    <meta name="keywords" content="modul qurilish, ko'chma uylar, ofis binolari, sanoat inshootlari, metall konstruksiya" />
+
+    <!-- Performance: Preconnect to Font domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Primary Meta Tags -->
+    <title>Modul Bino — Zamonaviy Modul Qurilish | Toshkent, O'zbekiston</title>
+    <meta name="title" content="Modul Bino — Zamonaviy Modul Qurilish | Toshkent, O'zbekiston" />
+    <meta name="description" content="O'zbekistonda zamonaviy modul uylar, ko'chma ofislar, sanoat inshootlari va tayyor modul sanuzllar. Tez qurilish (2-4 hafta), 10 yilgacha kafolat va hamyonbop narxlar." />
+    <meta name="keywords" content="modul qurilish, modul bino, ko'chma uylar, modul ofis, metall konstruksiya, sanoat binolari, modul sanuzel, modul uylar narxi, toshkent modul bino, prefabricated modular homes uzbekistan" />
+    <meta name="author" content="Modul Bino" />
+    <meta name="theme-color" content="#1a365d" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="googlefc18c996c59d27ba" />
+
+    <!-- Search Engine Directives -->
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
-    <!-- Open Graph meta tags - updated dynamically based on language -->
-    <meta property="og:title" content="Modul Bino — Zamonaviy Modul Qurilish" />
-    <meta property="og:description" content="Ko'chma uylar, ofis binolari, sanoat inshootlari va modul sanuzllar — tez, sifatli va arzon narxlarda." />
+    <!-- Geo Tags for Local SEO (Tashkent, Uzbekistan) -->
+    <meta name="geo.region" content="UZ-TK" />
+    <meta name="geo.placename" content="Tashkent" />
+    <meta name="geo.position" content="41.3275;69.2401" />
+    <meta name="ICBM" content="41.3275, 69.2401" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://modulbino.uz/" />
+
+    <!-- Multilingual Alternate Hreflang Tags -->
+    <link rel="alternate" hreflang="uz" href="https://modulbino.uz/" />
+    <link rel="alternate" hreflang="ru" href="https://modulbino.uz/" />
+    <link rel="alternate" hreflang="en" href="https://modulbino.uz/" />
+    <link rel="alternate" hreflang="x-default" href="https://modulbino.uz/" />
+
+    <!-- Open Graph / Facebook Meta Tags -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://modulbino.uz" />
-    <meta property="og:image" content="/src/assets/og.png" />
-    
-    <!-- Canonical link -->
-    <link rel="canonical" href="https://modulbino.uz" />
+    <meta property="og:site_name" content="Modul Bino" />
+    <meta property="og:url" content="https://modulbino.uz/" />
+    <meta property="og:title" content="Modul Bino — Zamonaviy Modul Qurilish" />
+    <meta property="og:description" content="Ko'chma uylar, ofis binolari, sanoat inshootlari va modul sanuzllar — tez, sifatli va 10 yilgacha kafolat bilan." />
+    <meta property="og:image" content="https://modulbino.uz/favi.png" />
+    <meta property="og:image:alt" content="Modul Bino - Zamonaviy Modul Qurilish" />
+    <meta property="og:locale" content="uz_UZ" />
+    <meta property="og:locale:alternate" content="ru_RU" />
+    <meta property="og:locale:alternate" content="en_US" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="./favi.png" />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://modulbino.uz/" />
+    <meta name="twitter:title" content="Modul Bino — Zamonaviy Modul Qurilish" />
+    <meta name="twitter:description" content="Ko'chma uylar, ofis binolari, sanoat inshootlari va modul sanuzllar — tez, sifatli va 10 yilgacha kafolat bilan." />
+    <meta name="twitter:image" content="https://modulbino.uz/favi.png" />
+    <meta name="twitter:image:alt" content="Modul Bino - Zamonaviy Modul Qurilish" />
 
-    <!-- JSON-LD Structured Data - updated dynamically based on language -->
+    <!-- Favicon & Icons -->
+    <link rel="icon" type="image/png" href="/favi.png" />
+    <link rel="apple-touch-icon" href="/favi.png" />
+
+    <!-- JSON-LD Structured Data (Schema.org) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Modul Bino",
-      "url": "https://modulbino.uz",
-      "logo": "https://modulbino.uz/src/assets/logo.png",
-      "description": "Ko'chma uylar, ofis binolari, sanoat inshootlari va modul sanuzllar — tez, sifatli va arzon narxlarda.",
-      "image": "https://modulbino.uz/src/assets/og.png",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "UZ",
-        "addressLocality": "Tashkent",
-        "addressRegion": "Shayhontohur",
-        "streetAddress": "Jangoh Street, 2"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "Customer Service",
-        "telephone": "+998998635050"
-      },
-      "sameAs": [
-        "https://www.instagram.com/modul_bino/"
+      "@graph": [
+        {
+          "@type": "HomeAndConstructionBusiness",
+          "@id": "https://modulbino.uz/#organization",
+          "name": "Modul Bino",
+          "alternateName": "Modul Qurilish",
+          "url": "https://modulbino.uz",
+          "logo": "https://modulbino.uz/favi.png",
+          "image": "https://modulbino.uz/favi.png",
+          "description": "O'zbekistonda zamonaviy modul uylar, ko'chma ofislar, sanoat inshootlari va tayyor modul sanuzllarni loyihalash hamda qurish xizmati.",
+          "telephone": "+998998635050",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Jangoh dahasi, 2",
+            "addressLocality": "Toshkent",
+            "addressRegion": "Shayhontohur",
+            "addressCountry": "UZ"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 41.3275,
+            "longitude": 69.2401
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              "opens": "09:00",
+              "closes": "18:00"
+            }
+          ],
+          "sameAs": [
+            "https://www.instagram.com/modul_bino/",
+            "https://module-homes.netlify.app/"
+          ],
+          "areaServed": {
+            "@type": "Country",
+            "name": "Uzbekistan"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://modulbino.uz/#website",
+          "url": "https://modulbino.uz",
+          "name": "Modul Bino",
+          "description": "Zamonaviy modul qurilish xizmatlari",
+          "publisher": {
+            "@id": "https://modulbino.uz/#organization"
+          },
+          "inLanguage": ["uz", "ru", "en"]
+        },
+        {
+          "@type": "OfferCatalog",
+          "@id": "https://modulbino.uz/#services",
+          "name": "Modul Bino Qurilish Xizmatlari",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Ko'chma uylar",
+                "description": "Tez o'rnatiladigan, qulay va zamonaviy ko'chma uylar. Har qanday sharoitga moslashtiriladi."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Bir qavatli modul uylar",
+                "description": "Modul texnologiyasi asosida qurilgan zamonaviy bir qavatli yashash uylari."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Ikki qavatli modul uylar",
+                "description": "Keng va shinam ikki qavatli modul uylar — oila uchun ideal tanlov."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Modul ofis binolari",
+                "description": "Zamonaviy dizaynli modul ofis binolari. Tez qurish va yuqori sifat kafolati."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Sanoat binolari",
+                "description": "Ishlab chiqarish va ombor uchun mo'ljallangan mustahkam sanoat inshootlari."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Modul sanuzel",
+                "description": "To'liq jihozlangan tayyor modul sanitary uzellari — tez o'rnatish va arzon narx."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://modulbino.uz/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Modul bino qancha vaqtda qurib bitkaziladi?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Modul binolar zavod sharoitida tayyorlanib, ob'ektga yetkaziladi va o'rtacha 2-4 hafta ichida to'liq montaj qilib topshiriladi."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Modul binolarga qancha muddat kafolat beriladi?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Modul Bino barcha metall konstruksiya va modul binolarga 10 yilgacha rasmiy kafolat beradi."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Metall konstruksiyali modul binolar zilzilaga chidamliligi qanday?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Metall karkasli modul konstruksiyalar elastik va mustahkam bo'lib, 9 ballgacha bo'lgan seysmik zilzilalarga bardosh beradi."
+              }
+            }
+          ]
+        }
       ]
     }
     </script>

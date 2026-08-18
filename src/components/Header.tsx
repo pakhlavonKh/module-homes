@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
@@ -14,14 +14,36 @@ import {
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showMobilePhones, setShowMobilePhones] = useState(false);
   const [activeLink, setActiveLink] = useState("#hero");
   const { t } = useLanguage();
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close mobile menu when clicking outside of the header
+  useEffect(() => {
+    if (!open) return;
+
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+        setOpen(false);
+        setShowMobilePhones(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [open]);
 
   const phoneNumbers = [
     { number: "+998 99 863 5050", link: "tel:+998998635050" },
@@ -46,6 +68,7 @@ const Header = () => {
 
   return (
     <header
+      ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled || open
           ? "glass shadow-sm"
@@ -55,11 +78,13 @@ const Header = () => {
       <div className="container flex items-center justify-between h-16 md:h-20">
 
         {/* Logo — switches between light and dark variant */}
-        <a href="#hero" className="flex items-center gap-2 group">
+        <a href="#hero" aria-label="Modul Bino — Bosh sahifa" className="flex items-center gap-2 group">
           <img
             src={isTransparent ? logoLight : logo}
-            alt="MODUL BINO"
+            alt="Modul Bino — Zamonaviy Modul Qurilish"
             className="h-10 md:h-12 w-auto transition-all duration-300 group-hover:scale-105"
+            width="160"
+            height="48"
           />
         </a>
 
@@ -136,6 +161,7 @@ const Header = () => {
         <div className="flex items-center gap-3 lg:hidden">
           <LanguageSwitcher transparent={isTransparent} />
           <button
+            aria-label="Menyu"
             className={`p-1.5 rounded-lg transition-colors ${
               isTransparent
                 ? "text-white hover:bg-white/10"
@@ -173,22 +199,37 @@ const Header = () => {
                 </motion.a>
               ))}
               <div className="mt-2 pt-3 border-t border-border/50 space-y-2">
-                <button className="hero-gradient text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 justify-center w-full">
+                <button
+                  onClick={() => setShowMobilePhones(!showMobilePhones)}
+                  className="hero-gradient text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 justify-center w-full cursor-pointer transition-all duration-200"
+                >
                   <Phone className="w-4 h-4" />
-                  {t.nav.callUs}
+                  <span>{t.nav.callUs}</span>
                 </button>
-                <div className="bg-secondary/40 rounded-xl p-3 space-y-2">
-                  {phoneNumbers.map((phone) => (
-                    <a
-                      key={phone.number}
-                      href={phone.link}
-                      className="flex items-center justify-center gap-2 text-sm text-accent hover:text-primary font-medium transition-colors py-1"
+                <AnimatePresence>
+                  {showMobilePhones && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full hero-gradient flex-shrink-0" />
-                      {phone.number}
-                    </a>
-                  ))}
-                </div>
+                      <div className="bg-secondary/40 rounded-xl p-3 space-y-2 mt-1">
+                        {phoneNumbers.map((phone) => (
+                          <a
+                            key={phone.number}
+                            href={phone.link}
+                            className="flex items-center justify-center gap-2 text-sm text-accent hover:text-primary font-medium transition-colors py-1"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full hero-gradient flex-shrink-0" />
+                            {phone.number}
+                          </a>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
           </motion.div>

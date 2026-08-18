@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 interface ProductCardProps {
@@ -9,19 +8,15 @@ interface ProductCardProps {
   tag?: string;
 }
 
-const ProductCard = ({ title, description, image, index, tag }: ProductCardProps) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-50px" }}
-    transition={{ duration: 0.55, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-    className="group bg-card rounded-2xl overflow-hidden card-shadow hover:card-hover-shadow transition-all duration-500 hover:-translate-y-1.5 border border-border/50 hover:border-primary/20"
-  >
+const ProductCard = ({ title, description, image, tag }: ProductCardProps) => (
+  <div className="group bg-card rounded-xl md:rounded-2xl overflow-hidden card-shadow hover:card-hover-shadow transition-all duration-300 hover:-translate-y-1 border border-border/50 hover:border-primary/20">
     {/* Image wrapper */}
-    <div className="relative overflow-hidden aspect-[4/3]">
+    <div className="relative overflow-hidden aspect-[16/10]">
       <img
         src={image}
-        alt={title}
+        alt={`${title} — Modul Bino`}
+        loading="lazy"
+        decoding="async"
         className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
         style={{ willChange: "transform" }}
       />
@@ -30,28 +25,28 @@ const ProductCard = ({ title, description, image, index, tag }: ProductCardProps
 
       {/* Tag chip */}
       {tag && (
-        <span className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/40 backdrop-blur-sm text-white text-xs font-semibold border border-white/15">
+        <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-black/40 backdrop-blur-sm text-white text-[11px] font-semibold border border-white/15">
           {tag}
         </span>
       )}
 
       {/* Hover overlay */}
-      <div className="absolute inset-0 hero-gradient opacity-0 group-hover:opacity-70 transition-opacity duration-400 flex items-end justify-end p-4">
-        <div className="flex items-center gap-1.5 text-white text-sm font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+      <div className="absolute inset-0 hero-gradient opacity-0 group-hover:opacity-70 transition-opacity duration-300 flex items-end justify-end p-3">
+        <div className="flex items-center gap-1 text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
           Batafsil
-          <ArrowUpRight className="w-4 h-4" />
+          <ArrowUpRight className="w-3.5 h-3.5" />
         </div>
       </div>
     </div>
 
     {/* Content */}
-    <div className="p-6">
-      <h3 className="font-heading font-bold text-xl text-foreground mb-2 group-hover:text-accent transition-colors duration-300">
+    <div className="p-4 sm:p-5">
+      <h3 className="font-heading font-bold text-base md:text-lg text-foreground mb-1.5 group-hover:text-accent transition-colors duration-300">
         {title}
       </h3>
-      <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+      <p className="text-muted-foreground text-xs md:text-sm leading-relaxed line-clamp-2">{description}</p>
     </div>
-  </motion.div>
+  </div>
 );
 
 export default ProductCard;
