@@ -59,6 +59,52 @@ export const uz: TranslationType = {
         description:
           "To'liq jihozlangan tayyor modul sanitary uzellari — tez o'rnatish va arzon narx.",
       },
+      {
+        title: "Platforma (Mezonin)",
+        tag: "Platforma",
+        description:
+          "Ombor, sex yoki ishlab chiqarish maydonini bino kengaytirmasdan 2 baravar oshirish uchun metall mezonin platformasi.",
+        fullDescription:
+          "Ombor, sex yoki ishlab chiqarish maydonini ikki qavatga aylantiring, bino kengaytirmasdan. Metall mezonin, ya’ni ikkinchi qavat platformasi, shiftingiz balandligidan foydalanib foydali maydonni 2 baravar oshirishga yordam beradi. Konstruksiya yig’ma bo’lib, bolt biriktirmalari bilan montaj qilinadi. Tezda o’rnatiladi, kerak bo’lsa ko’chirish yoki kengaytirish mumkin.",
+        features: [
+          "Yuk ko'tarish qobiliyati: 1 m² uchun 250 kg dan (talab bo'yicha 500 kg/m² va undan yuqori ham tayyorlanadi)",
+          "Maydon va balandlik: o'lchamlar sizning xonangizga moslab individual tayyorlanadi",
+          "Tez montaj: payvandsiz bolt biriktirmalar, ish to'xtamaydi",
+          "Xavfsizlik: atrofida himoya perellasi va plintus, zinada ikki tomonlama tutqich",
+          "Uzoq xizmat: mustahkam po'lat karkas va korroziyaga qarshi qoplama",
+          "Kengaytirish imkoni: keyinchalik maydonni qo'shish, zinani boshqa joyga ko'chirish mumkin",
+        ],
+      },
+      {
+        title: "Yuk lifti",
+        tag: "Lift",
+        description:
+          "Omborxona, sex va ishlab chiqarishda yuklarni qavatlar o'rtasida tez va xavfsiz ko'tarish tizimlari.",
+        fullDescription:
+          "Omborxona, sex va ishlab chiqarishda yuklarni qavatlar o’rtasida tez va xavfsiz ko’taring. Yuk lifti tovar, xomashyo va tayyor mahsulotni bir qavatdan ikkinchisiga ko’tarish va tushirish uchun mo’ljallangan. U qo’lda ko’tarishni yo’qotadi, ishchilar vaqtini tejaydi va yuk bilan bog’liq jarohat xavfini kamaytiradi. Konstruksiya po’lat karkasli, to’r devorli bo’lib, telferli, motor-reduktorli yoki gidravlik yuritma bilan tayyorlanadi.",
+        features: [
+          "Vaqtni tejaydi: yuk zinadan ko'tarilmaydi, aravacha yoki yashiklar bilan to'g'ridan-to'g'ri qavatga chiqadi",
+          "Mustahkam karkas: kvadrat profilli po'lat trubadan payvandlangan, diagonal mustahkamlagichlari bor",
+          "Xavfsiz: shaxta to'r bilan o'ralgan, kabina eshigi yopilmaguncha harakat boshlanmaydi (avtoblokirovka)",
+          "Yuritma tanlash imkoni: telfer, motor-reduktor yoki gidravlik yuritma, yuk, balandlik va tezlikka qarab",
+          "Qulay o'lcham: kabina o'lchami, balandlik va qavatlar soni sizning xonangizga moslab tayyorlanadi",
+        ],
+      },
+      {
+        title: "Mebel uskunalari",
+        tag: "Mebel",
+        description:
+          "Sex, ustaxona va ishlab chiqarish korxonalari uchun metall karkasli mustahkam mebellar va sanoat jihozlari.",
+        fullDescription:
+          "Sex, ustaxona va ishlab chiqarish korxonalari uchun maxsus metall karkasli zamonaviy va mustahkam mebel uskunalari. Payvandlash va montaj stollari, vertaklar, og'ir yukka mo'ljallangan stellajlar hamda sanoat mebellarini sizning o'lchamlaringiz bo'yicha tayyorlab beramiz.",
+        features: [
+          "Og'ir yukka chidamlilik: qalin devorli metall profil va mustahkam polimer bo'yoq",
+          "Ergonomik dizayn: ishchilarning qulay va samarali ishlashi uchun moslashtirilgan",
+          "Ko'p funksiyali: asboblar, qutilar va ehtiyot qismlarni qulay joylashtirish tizimi",
+          "Uzoq xizmat muddati: mexanik zarbalarga va korroziyaga yuqori chidamlilik",
+          "Individual buyurtma: korxonangiz o'lchamlari va texnologik talablaringizga mos loyihalash",
+        ],
+      },
     ],
   },
   about: {

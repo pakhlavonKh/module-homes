@@ -43,7 +43,7 @@ export const useSEO = () => {
     setMetaTag("name", "keywords", t.seo.keywords);
     setMetaTag("name", "author", "Modul Bino");
     setMetaTag("name", "robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
-    setMetaTag("name", "theme-color", "#1a365d");
+    setMetaTag("name", "theme-color", "#1C811B");
 
     // 3. Local SEO Geo Tags (Tashkent, Uzbekistan)
     setMetaTag("name", "geo.region", "UZ-TK");

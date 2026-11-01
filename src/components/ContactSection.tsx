@@ -5,11 +5,11 @@ const ContactSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="contact" className="py-10 md:py-16 bg-background relative overflow-hidden">
+    <section id="contact" className="py-16 md:py-20 lg:py-24 bg-background relative overflow-hidden">
       {/* Subtle background texture */}
       <div className="absolute inset-0 dot-pattern opacity-30 pointer-events-none" />
 
-      <div className="container relative z-10">
+      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Refined Minimalist Header */}
         <div className="text-center mb-6 md:mb-10">
           <div className="inline-flex items-center gap-3 text-accent font-semibold text-xs uppercase tracking-[0.25em] mb-4">

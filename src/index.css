@@ -5,49 +5,67 @@
 @tailwind utilities;
 
 @layer base {
+  html, body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
   :root {
-    --background: 210 30% 96%;
-    --foreground: 210 50% 10%;
+    --bg: #F5F7F2;
+    --ink: #0B2E17;
+    --text: #3F5247;
+    --green: #145C2B;
+    --lime: #A8E063;
+    --card: #FFFFFF;
+
+    --hero-green-deep: #0B3D1E;
+    --hero-green-end: #145C2B;
+    --hero-green-mid: #1B7A34;
+    --hero-lime: #A8E063;
+    --hero-lime-dark: #0B3D1E;
+
+    --background: 120 8% 98%;
+    --foreground: 0 0% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 50% 10%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 50% 10%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 210 55% 25%;
-    --primary-foreground: 210 30% 96%;
+    --primary: 119 65% 31%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 90%;
-    --secondary-foreground: 210 55% 25%;
+    --secondary: 120 12% 94%;
+    --secondary-foreground: 119 65% 25%;
 
-    --muted: 210 25% 92%;
-    --muted-foreground: 210 15% 45%;
+    --muted: 120 8% 92%;
+    --muted-foreground: 120 4% 44%;
 
-    --accent: 210 60% 40%;
+    --accent: 119 66% 33%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 210 25% 85%;
-    --input: 210 25% 85%;
-    --ring: 210 55% 25%;
+    --border: 120 8% 88%;
+    --input: 120 8% 88%;
+    --ring: 119 65% 31%;
 
     --radius: 0.75rem;
 
-    --hero-gradient: linear-gradient(135deg, hsl(210, 55%, 25%) 0%, hsl(210, 60%, 40%) 50%, hsl(200, 50%, 50%) 100%);
-    --card-shadow: 0 4px 24px -4px hsl(210 55% 25% / 0.10), 0 1px 4px hsl(210 55% 25% / 0.06);
-    --card-hover-shadow: 0 16px 48px -12px hsl(210 55% 25% / 0.22), 0 4px 12px hsl(210 55% 25% / 0.10);
+    --hero-gradient: linear-gradient(135deg, hsl(125, 45%, 12%) 0%, hsl(120, 55%, 19%) 50%, hsl(119, 65%, 31%) 100%);
+    --card-shadow: 0 4px 24px -4px hsl(119 65% 20% / 0.08), 0 1px 4px hsl(119 65% 20% / 0.04);
+    --card-hover-shadow: 0 16px 48px -12px hsl(119 65% 25% / 0.18), 0 4px 12px hsl(119 65% 25% / 0.08);
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-foreground: 0 0% 15%;
+    --sidebar-primary: 119 65% 31%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 120 12% 94%;
+    --sidebar-accent-foreground: 119 65% 25%;
+    --sidebar-border: 120 8% 88%;
+    --sidebar-ring: 119 65% 31%;
   }
 }
 
@@ -96,14 +114,14 @@
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid hsl(210 25% 85% / 0.8);
+    border-bottom: 1px solid hsl(120 8% 88% / 0.8);
   }
 
   .glass-card {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid hsl(210 25% 85% / 0.6);
+    border: 1px solid hsl(120 8% 88% / 0.6);
   }
 
   .gradient-border {
@@ -124,12 +142,38 @@
   }
 
   .dot-pattern {
-    background-image: radial-gradient(circle, hsl(210 55% 25% / 0.08) 1px, transparent 1px);
+    background-image: radial-gradient(circle, hsl(119 65% 31% / 0.08) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 
   .section-divider {
     height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(210 25% 85%), transparent);
+    background: linear-gradient(90deg, transparent, hsl(120 8% 88%), transparent);
+  }
+
+  @keyframes floatSlow {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes floatSlowAlt {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(8px);
+    }
+  }
+
+  .animate-float-1 {
+    animation: floatSlow 4.5s ease-in-out infinite;
+  }
+
+  .animate-float-2 {
+    animation: floatSlowAlt 5s ease-in-out infinite 0.6s;
   }
 }

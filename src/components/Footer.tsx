@@ -23,7 +23,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative hero-gradient text-primary-foreground overflow-hidden pt-6">
+    <footer className="relative hero-gradient text-primary-foreground overflow-hidden pt-12 md:pt-16 pb-6">
       {/* Background grid overlay */}
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"
@@ -34,9 +34,9 @@ const Footer = () => {
         }}
       />
 
-      <div className="container max-w-6xl relative z-10">
+      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Compact Light Pre-footer CTA Card with readable font */}
-        <div className="relative bg-card text-foreground rounded-2xl p-5 md:p-6 mb-6 card-shadow border border-border overflow-hidden">
+        <div className="relative bg-card text-foreground rounded-2xl p-6 md:p-8 mb-10 md:mb-12 card-shadow border border-border overflow-hidden">
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-5">
             <div className="text-center md:text-left max-w-xl">
               <span className="inline-block px-3 py-0.5 rounded-full bg-accent/10 text-accent text-xs font-semibold uppercase tracking-wider mb-2 border border-accent/20">

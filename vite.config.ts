@@ -5,14 +5,15 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
-    host: "::",
-    port: 8080,
+    host: true,
+    port: 5173,
     hmr: {
       overlay: false,
     },
   },
   plugins: [react()].filter(Boolean),
   resolve: {
+    preserveSymlinks: true,
     alias: {
       "@": path.resolve(__dirname, "src"),
     },

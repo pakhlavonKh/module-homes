@@ -9,12 +9,12 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="relative min-h-screen flex items-center py-12 lg:py-10 bg-card overflow-hidden"
+      className="relative py-16 md:py-20 lg:py-24 bg-card overflow-hidden"
     >
       {/* Subtle background texture */}
       <div className="absolute inset-0 dot-pattern opacity-60 pointer-events-none" />
 
-      <div className="container max-w-6xl relative z-10 w-full">
+      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
           {/* Left column — Intro & Why Metal */}
           <div className="lg:col-span-6 flex flex-col justify-center">

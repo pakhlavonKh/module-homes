@@ -29,7 +29,13 @@ export type TranslationType = {
   products: {
     badge: string;
     title: string;
-    items: { title: string; description: string }[];
+    items: {
+      title: string;
+      description: string;
+      tag?: string;
+      fullDescription?: string;
+      features?: string[];
+    }[];
   };
   about: {
     badge: string;

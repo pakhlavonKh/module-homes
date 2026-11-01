@@ -18,6 +18,12 @@ export default {
         body: ["DM Sans", "Inter", "sans-serif"],
       },
       colors: {
+        hero: {
+          deep: "var(--hero-green-deep, #0B3D1E)",
+          mid: "var(--hero-green-mid, #1B7A34)",
+          lime: "var(--hero-lime, #A8E063)",
+          dark: "var(--hero-lime-dark, #0B3D1E)",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

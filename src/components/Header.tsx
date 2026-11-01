@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 import logo from "@/assets/logo.webp";
-import logoLight from "@/assets/logo-light.png";
 import {
   HoverCard,
   HoverCardContent,
@@ -51,93 +50,70 @@ const Header = () => {
   ];
 
   const navLinks = [
-    // min-w values chosen to match the widest translation for each slot:
-    // home:    "Bosh sahifa" (UZ) ~88px
-    // products:"Mahsulotlar" (UZ) ~88px
-    // about:   "Biz haqimizda" (UZ) ~104px
-    // contact: "Kontakty" (RU) ~80px
-    { label: t.nav.home,     href: "#hero",    minW: "min-w-[88px]"  },
-    { label: t.nav.products, href: "#products", minW: "min-w-[88px]"  },
-    { label: t.nav.about,    href: "#about",   minW: "min-w-[108px]" },
-    { label: t.nav.contact,  href: "#contact", minW: "min-w-[76px]"  },
+    { label: t.nav.home, href: "#hero", minW: "min-w-[88px]" },
+    { label: t.nav.products, href: "#products", minW: "min-w-[88px]" },
+    { label: t.nav.about, href: "#about", minW: "min-w-[108px]" },
+    { label: t.nav.contact, href: "#contact", minW: "min-w-[76px]" },
   ];
-
-  // When transparent (at top): white text + light logo
-  // When scrolled (glass bg): dark text + dark logo
-  const isTransparent = !scrolled && !open;
 
   return (
     <header
       ref={headerRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled || open
-          ? "glass shadow-sm"
-          : "bg-transparent border-b border-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 pt-2.5 sm:pt-4 px-3 sm:px-6 lg:px-8 pointer-events-none transition-all duration-300"
     >
-      <div className="container flex items-center justify-between h-16 md:h-20">
-
-        {/* Logo — switches between light and dark variant */}
-        <a href="#hero" aria-label="Modul Bino — Bosh sahifa" className="flex items-center gap-2 group">
+      {/* Floating White Pill Bar */}
+      <div
+        className={`w-full max-w-[1280px] mx-auto rounded-full backdrop-blur-xl border pointer-events-auto transition-all duration-300 ${
+          scrolled || open
+            ? "bg-white/95 border-[#0B2E17]/[0.12] shadow-[0_12px_36px_rgba(11,46,23,0.1)]"
+            : "bg-white/80 border-[#0B2E17]/[0.08] shadow-[0_8px_30px_rgba(11,46,23,0.06)]"
+        } flex items-center justify-between h-13 sm:h-14 md:h-16 px-3.5 sm:px-5 md:px-6`}
+      >
+        {/* Brand Logo (Colour version for light background) */}
+        <a href="#hero" aria-label="Modul Bino — Bosh sahifa" className="flex items-center gap-2 group flex-shrink-0">
           <img
-            src={isTransparent ? logoLight : logo}
+            src={logo}
             alt="Modul Bino — Zamonaviy Modul Qurilish"
-            className="h-10 md:h-12 w-auto transition-all duration-300 group-hover:scale-105"
-            width="160"
-            height="48"
+            className="h-6 sm:h-8 md:h-9 w-auto transition-all duration-300 group-hover:scale-105"
+            width="140"
+            height="36"
           />
         </a>
 
-        {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        {/* Desktop Nav */}
+        <nav className="hidden lg:flex items-center gap-7">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setActiveLink(link.href)}
               className={`relative text-sm font-medium transition-colors duration-200 group py-1 text-center ${link.minW} ${
-                isTransparent
-                  ? "text-white/80 hover:text-white"
-                  : "text-muted-foreground hover:text-foreground"
+                activeLink === link.href ? "text-[#0B2E17] font-semibold" : "text-[#3F5247] hover:text-[#0B2E17]"
               }`}
             >
-              <motion.span
-                key={link.label}
-                initial={{ opacity: 0, y: -6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 6 }}
-                transition={{ duration: 0.18 }}
-                className="block"
-              >
-                {link.label}
-              </motion.span>
+              <span className="block">{link.label}</span>
               <span
-                className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
-                  isTransparent ? "bg-white" : "hero-gradient"
-                } ${
+                className={`absolute bottom-0 left-0 h-[2.5px] rounded-full transition-all duration-300 bg-[#A8E063] ${
                   activeLink === link.href ? "w-full" : "w-0 group-hover:w-full"
                 }`}
               />
             </a>
           ))}
 
-          {/* Language switcher */}
-          <div className={isTransparent ? "transparent-lang" : ""}>
-            <LanguageSwitcher transparent={isTransparent} />
-          </div>
+          {/* Language Switcher */}
+          <LanguageSwitcher transparent={false} />
 
-          {/* Call button — pill shape */}
+          {/* Call button — Deep Green Background, White Text */}
           <HoverCard>
             <HoverCardTrigger asChild>
-              <button className="relative hero-gradient text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5">
-                <span className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300" />
-                <Phone className="w-4 h-4" />
-                {t.nav.callUs}
+              <button className="relative bg-[#145C2B] text-white hover:bg-[#0B2E17] px-5 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 overflow-hidden group cursor-pointer transition-all duration-300 shadow-[0_4px_16px_rgba(20,92,43,0.2)] hover:shadow-[0_8px_24px_rgba(20,92,43,0.35)] hover:-translate-y-0.5">
+                <Phone className="w-3.5 h-3.5 stroke-[2.5]" />
+                <span>{t.nav.callUs}</span>
               </button>
             </HoverCardTrigger>
-            <HoverCardContent className="w-56 glass-card border-border/50 shadow-xl">
+            <HoverCardContent className="w-56 backdrop-blur-xl bg-white border border-[#0B2E17]/[0.08] shadow-2xl text-[#0B2E17] rounded-2xl p-4">
               <div className="space-y-3">
-                <p className="text-sm font-semibold text-foreground">
+                <p className="text-sm font-bold text-[#0B2E17] font-heading">
                   {t.nav.callUs}
                 </p>
                 <div className="space-y-2">
@@ -145,9 +121,9 @@ const Header = () => {
                     <a
                       key={phone.number}
                       href={phone.link}
-                      className="flex items-center gap-2 text-sm text-accent hover:text-primary font-medium transition-colors"
+                      className="flex items-center gap-2 text-sm text-[#145C2B] hover:text-[#0B2E17] font-medium transition-colors"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full hero-gradient flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#145C2B] flex-shrink-0" />
                       {phone.number}
                     </a>
                   ))}
@@ -157,16 +133,12 @@ const Header = () => {
           </HoverCard>
         </nav>
 
-        {/* Mobile: hamburger */}
+        {/* Mobile controls */}
         <div className="flex items-center gap-3 lg:hidden">
-          <LanguageSwitcher transparent={isTransparent} />
+          <LanguageSwitcher transparent={false} />
           <button
             aria-label="Menyu"
-            className={`p-1.5 rounded-lg transition-colors ${
-              isTransparent
-                ? "text-white hover:bg-white/10"
-                : "text-foreground hover:bg-secondary"
-            }`}
+            className="p-1.5 rounded-lg text-[#0B2E17] hover:bg-[#0B2E17]/[0.06] transition-colors cursor-pointer"
             onClick={() => setOpen(!open)}
           >
             {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -174,34 +146,38 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Glass Dropdown Menu */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
+            initial={{ height: 0, opacity: 0, y: -10 }}
+            animate={{ height: "auto", opacity: 1, y: 0 }}
+            exit={{ height: 0, opacity: 0, y: -10 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="lg:hidden glass border-b border-border/50 overflow-hidden"
+            className="lg:hidden max-w-[1280px] mx-auto mt-2 rounded-2xl backdrop-blur-2xl bg-white/95 border border-[#0B2E17]/[0.08] shadow-2xl overflow-hidden pointer-events-auto"
           >
-            <div className="container py-5 flex flex-col gap-1">
-              {navLinks.map((link, i) => (
-                <motion.a
+            <div className="p-4 flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <a
                   key={link.href}
                   href={link.href}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.06 }}
                   onClick={() => setOpen(false)}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors px-3 py-2.5 rounded-lg"
+                  className={`text-sm font-medium transition-colors px-3 py-2.5 rounded-xl flex items-center justify-between ${
+                    activeLink === link.href
+                      ? "text-[#145C2B] bg-[#E4F2D3]/40 font-bold"
+                      : "text-[#3F5247] hover:text-[#0B2E17] hover:bg-[#0B2E17]/[0.04]"
+                  }`}
                 >
-                  {link.label}
-                </motion.a>
+                  <span>{link.label}</span>
+                  {activeLink === link.href && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#A8E063]" />
+                  )}
+                </a>
               ))}
-              <div className="mt-2 pt-3 border-t border-border/50 space-y-2">
+              <div className="mt-2 pt-3 border-t border-[#0B2E17]/[0.08] space-y-2">
                 <button
                   onClick={() => setShowMobilePhones(!showMobilePhones)}
-                  className="hero-gradient text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 justify-center w-full cursor-pointer transition-all duration-200"
+                  className="bg-[#145C2B] text-white px-5 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 justify-center w-full cursor-pointer transition-all duration-200 shadow-[0_4px_16px_rgba(20,92,43,0.2)]"
                 >
                   <Phone className="w-4 h-4" />
                   <span>{t.nav.callUs}</span>
@@ -215,14 +191,14 @@ const Header = () => {
                       transition={{ duration: 0.2 }}
                       className="overflow-hidden"
                     >
-                      <div className="bg-secondary/40 rounded-xl p-3 space-y-2 mt-1">
+                      <div className="bg-[#0B2E17]/[0.04] rounded-xl p-3 space-y-2 mt-1 border border-[#0B2E17]/[0.06]">
                         {phoneNumbers.map((phone) => (
                           <a
                             key={phone.number}
                             href={phone.link}
-                            className="flex items-center justify-center gap-2 text-sm text-accent hover:text-primary font-medium transition-colors py-1"
+                            className="flex items-center justify-center gap-2 text-sm text-[#145C2B] hover:text-[#0B2E17] font-medium transition-colors py-1"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full hero-gradient flex-shrink-0" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#145C2B] flex-shrink-0" />
                             {phone.number}
                           </a>
                         ))}

@@ -8,8 +8,8 @@ interface LanguageSwitcherProps {
 }
 
 const LANGS: Language[] = ["uz", "ru", "en"];
-// Each button is w-9 (36px), no gap between them — pill moves by 36px per step
-const PILL_W = 36;
+// Compact pill: 32px per button, 4px container padding
+const PILL_W = 32;
 const CONTAINER_PAD = 4; // p-1 = 4px
 
 const LanguageSwitcher = ({ transparent = false }: LanguageSwitcherProps) => {
@@ -19,13 +19,13 @@ const LanguageSwitcher = ({ transparent = false }: LanguageSwitcherProps) => {
   return (
     <div
       className={`relative flex items-center rounded-full p-1 transition-colors duration-300 ${
-        transparent ? "bg-white/10" : "bg-secondary"
+        transparent ? "bg-white/10" : "bg-[#0B2E17]/[0.06] border border-[#0B2E17]/[0.05]"
       }`}
     >
       {/* Single sliding pill — always in DOM, just moves */}
       <motion.div
         className={`absolute top-1 h-7 rounded-full pointer-events-none ${
-          transparent ? "bg-white" : "hero-gradient"
+          transparent ? "bg-white" : "bg-[#0B2E17]"
         }`}
         style={{ width: PILL_W, left: CONTAINER_PAD }}
         animate={{ x: activeIndex * PILL_W }}
@@ -36,14 +36,14 @@ const LanguageSwitcher = ({ transparent = false }: LanguageSwitcherProps) => {
         <button
           key={lang}
           onClick={() => setLanguage(lang)}
-          className={`relative z-10 w-9 h-7 flex items-center justify-center text-xs font-semibold uppercase transition-colors duration-200 rounded-full ${
+          className={`relative z-10 w-8 h-7 flex items-center justify-center text-[11px] sm:text-xs font-semibold uppercase transition-colors duration-200 rounded-full cursor-pointer ${
             language === lang
               ? transparent
-                ? "text-primary"
-                : "text-primary-foreground"
+                ? "text-[#0B2E17]"
+                : "text-white font-bold"
               : transparent
               ? "text-white/70 hover:text-white"
-              : "text-muted-foreground hover:text-foreground"
+              : "text-[#3F5247] hover:text-[#0B2E17]"
           }`}
         >
           {lang}
