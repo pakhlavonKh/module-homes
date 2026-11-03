@@ -60,12 +60,12 @@ export const en: TranslationType = {
           "Fully equipped modular sanitary units — quick installation at affordable prices.",
       },
       {
-        title: "Mezzanine Platform",
+        title: "Platform",
         tag: "Platform",
         description:
-          "Industrial metal mezzanine platforms to double warehouse or workshop floor space without expanding the building.",
+          "Industrial metal platforms to double warehouse or workshop floor space without expanding the building.",
         fullDescription:
-          "Turn your warehouse, workshop, or manufacturing area into a two-story space without expanding the building footprint. A steel mezzanine platform utilizes ceiling height to double your usable floor area. The prefabricated bolted structure is assembled quickly without on-site welding and can be easily disassembled, expanded, or relocated if needed.",
+          "Turn your warehouse, workshop, or manufacturing area into a two-story space without expanding the building footprint. A steel platform utilizes ceiling height to double your usable floor area. The prefabricated bolted structure is assembled quickly without on-site welding and can be easily disassembled, expanded, or relocated if needed.",
         features: [
           "Load capacity: from 250 kg/m² (reinforced versions up to 500+ kg/m² available on request)",
           "Custom dimensions: engineered to fit the exact height and layout of your facility",

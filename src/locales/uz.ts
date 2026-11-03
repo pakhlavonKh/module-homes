@@ -60,12 +60,12 @@ export const uz: TranslationType = {
           "To'liq jihozlangan tayyor modul sanitary uzellari — tez o'rnatish va arzon narx.",
       },
       {
-        title: "Platforma (Mezonin)",
+        title: "Platforma",
         tag: "Platforma",
         description:
-          "Ombor, sex yoki ishlab chiqarish maydonini bino kengaytirmasdan 2 baravar oshirish uchun metall mezonin platformasi.",
+          "Ombor, sex yoki ishlab chiqarish maydonini bino kengaytirmasdan 2 baravar oshirish uchun metall platformasi.",
         fullDescription:
-          "Ombor, sex yoki ishlab chiqarish maydonini ikki qavatga aylantiring, bino kengaytirmasdan. Metall mezonin, ya’ni ikkinchi qavat platformasi, shiftingiz balandligidan foydalanib foydali maydonni 2 baravar oshirishga yordam beradi. Konstruksiya yig’ma bo’lib, bolt biriktirmalari bilan montaj qilinadi. Tezda o’rnatiladi, kerak bo’lsa ko’chirish yoki kengaytirish mumkin.",
+          "Ombor, sex yoki ishlab chiqarish maydonini ikki qavatga aylantiring, bino kengaytirmasdan. Metall platforma, ya’ni ikkinchi qavat platformasi, shiftingiz balandligidan foydalanib foydali maydonni 2 baravar oshirishga yordam beradi. Konstruksiya yig’ma bo’lib, bolt biriktirmalari bilan montaj qilinadi. Tezda o’rnatiladi, kerak bo’lsa ko’chirish yoki kengaytirish mumkin.",
         features: [
           "Yuk ko'tarish qobiliyati: 1 m² uchun 250 kg dan (talab bo'yicha 500 kg/m² va undan yuqori ham tayyorlanadi)",
           "Maydon va balandlik: o'lchamlar sizning xonangizga moslab individual tayyorlanadi",
