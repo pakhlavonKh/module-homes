@@ -5,17 +5,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Synchronous language check to set HTML lang immediately on first load -->
+  <!-- Synchronous language detection & auto-routing on root visit -->
   <script>
     (function () {
-      var p = window.location.pathname;
-      if (p === '/ru' || p.startsWith('/ru/')) {
-        document.documentElement.lang = 'ru';
-      } else if (p === '/en' || p.startsWith('/en/')) {
-        document.documentElement.lang = 'en';
-      } else if (p === '/uz' || p.startsWith('/uz/')) {
-        document.documentElement.lang = 'uz';
-      }
+      try {
+        var p = window.location.pathname;
+        if (p === '/' || p === '') {
+          var saved = localStorage.getItem('user_lang');
+          var detected = saved;
+          if (!detected && typeof navigator !== 'undefined') {
+            var navLangs = navigator.languages || [navigator.language || ''];
+            for (var i = 0; i < navLangs.length; i++) {
+              var l = (navLangs[i] || '').toLowerCase();
+              if (l.indexOf('ru') === 0) { detected = 'ru'; break; }
+              if (l.indexOf('en') === 0) { detected = 'en'; break; }
+              if (l.indexOf('uz') === 0) { detected = 'uz'; break; }
+            }
+          }
+          if (detected === 'ru') {
+            window.location.replace('/ru' + window.location.search + window.location.hash);
+            return;
+          } else if (detected === 'en') {
+            window.location.replace('/en' + window.location.search + window.location.hash);
+            return;
+          }
+        }
+
+        if (p === '/ru' || p.startsWith('/ru/')) {
+          document.documentElement.lang = 'ru';
+        } else if (p === '/en' || p.startsWith('/en/')) {
+          document.documentElement.lang = 'en';
+        } else if (p === '/uz' || p.startsWith('/uz/')) {
+          document.documentElement.lang = 'uz';
+        }
+      } catch (e) {}
     })();
   </script>
 

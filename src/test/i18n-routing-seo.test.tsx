@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { LanguageProvider, useLanguage } from "@/context/LanguageContext";
-import { getLanguageFromPath, getPathForLanguage } from "@/lib/languageUtils";
+import { getLanguageFromPath, getPathForLanguage, detectBrowserLanguage } from "@/lib/languageUtils";
 import { useSEO } from "@/hooks/useSEO";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { ru } from "@/locales/ru";
@@ -131,8 +131,10 @@ describe("Language Context and SEO integration", () => {
   });
 
   it("switches correctly between languages", () => {
+    localStorage.setItem("user_lang", "uz");
+
     render(
-      <MemoryRouter initialEntries={["/"]}>
+      <MemoryRouter initialEntries={["/uz"]}>
         <LanguageProvider>
           <TestComponent />
         </LanguageProvider>
@@ -150,9 +152,21 @@ describe("Language Context and SEO integration", () => {
     expect(screen.getByTestId("current-lang").textContent).toBe("en");
     expect(document.documentElement.lang).toBe("en");
     expect(document.title).toBe(en.seo.title);
+    expect(localStorage.getItem("user_lang")).toBe("en");
 
     const ogLocale = document.querySelector('meta[property="og:locale"]');
     expect(ogLocale?.getAttribute("content")).toBe("en_US");
+
+    // Click RU
+    const ruButton = screen.getByRole("button", { name: /switch language to ru/i });
+    act(() => {
+      fireEvent.click(ruButton);
+    });
+
+    expect(screen.getByTestId("current-lang").textContent).toBe("ru");
+    expect(document.documentElement.lang).toBe("ru");
+    expect(document.title).toBe(ru.seo.title);
+    expect(localStorage.getItem("user_lang")).toBe("ru");
 
     // Click UZ
     const uzButton = screen.getByRole("button", { name: /switch language to uz/i });
@@ -163,5 +177,46 @@ describe("Language Context and SEO integration", () => {
     expect(screen.getByTestId("current-lang").textContent).toBe("uz");
     expect(document.documentElement.lang).toBe("uz");
     expect(document.title).toBe(uz.seo.title);
+    expect(localStorage.getItem("user_lang")).toBe("uz");
+  });
+
+  it("detects browser language from navigator", () => {
+    localStorage.clear();
+
+    const originalLanguages = navigator.languages;
+    try {
+      Object.defineProperty(navigator, "languages", {
+        value: ["ru-RU", "ru"],
+        configurable: true,
+      });
+      expect(detectBrowserLanguage()).toBe("ru");
+
+      Object.defineProperty(navigator, "languages", {
+        value: ["en-US", "en"],
+        configurable: true,
+      });
+      expect(detectBrowserLanguage()).toBe("en");
+
+      Object.defineProperty(navigator, "languages", {
+        value: ["uz-UZ"],
+        configurable: true,
+      });
+      expect(detectBrowserLanguage()).toBe("uz");
+    } finally {
+      Object.defineProperty(navigator, "languages", {
+        value: originalLanguages,
+        configurable: true,
+      });
+    }
+  });
+
+  it("respects user_lang in localStorage over browser language", () => {
+    localStorage.setItem("user_lang", "ru");
+    expect(detectBrowserLanguage()).toBe("ru");
+
+    localStorage.setItem("user_lang", "uz");
+    expect(detectBrowserLanguage()).toBe("uz");
+
+    localStorage.clear();
   });
 });

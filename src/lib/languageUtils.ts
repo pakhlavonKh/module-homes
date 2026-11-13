@@ -7,6 +7,29 @@ export const getLanguageFromPath = (pathname: string): Language => {
   return "uz";
 };
 
+export const detectBrowserLanguage = (): Language => {
+  try {
+    const saved = localStorage.getItem("user_lang");
+    if (saved === "ru" || saved === "en" || saved === "uz") {
+      return saved as Language;
+    }
+  } catch {
+    // localStorage might be unavailable in private browsing or restricted environments
+  }
+
+  if (typeof navigator !== "undefined") {
+    const navLangs = navigator.languages || [navigator.language || ""];
+    for (const l of navLangs) {
+      const lower = (l || "").toLowerCase();
+      if (lower.startsWith("ru")) return "ru";
+      if (lower.startsWith("en")) return "en";
+      if (lower.startsWith("uz")) return "uz";
+    }
+  }
+
+  return "uz";
+};
+
 export const getPathForLanguage = (
   targetLang: Language,
   currentPathname: string,
