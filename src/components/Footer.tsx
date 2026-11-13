@@ -18,7 +18,7 @@ const Footer = () => {
 
   const socials = [
     { icon: Phone, href: "tel:+998998635050", label: "Telefon" },
-    { icon: Instagram, href: "https://www.instagram.com/modul_bino/", label: "Instagram" },
+    { icon: Instagram, href: "https://www.instagram.com/modulbino/", label: "Instagram" },
     { icon: Globe, href: "https://module-homes.netlify.app/", label: "Veb-sayt" },
   ];
 

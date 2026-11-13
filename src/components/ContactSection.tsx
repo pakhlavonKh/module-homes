@@ -54,7 +54,7 @@ const ContactSection = () => {
 
             {/* Quadrant 2: Instagram */}
             <a
-              href="https://www.instagram.com/modul_bino/"
+              href="https://www.instagram.com/modulbino/"
               target="_blank"
               rel="noopener noreferrer"
               className="group p-6 md:p-8 lg:p-10 md:border-b border-border/70 flex flex-col justify-between transition-colors duration-200 hover:bg-muted/25"
@@ -68,7 +68,7 @@ const ContactSection = () => {
                   <ArrowUpRight className="w-4 h-4 text-muted-foreground/60 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
                 </div>
                 <div className="font-heading font-semibold text-lg md:text-xl text-foreground group-hover:text-accent transition-colors duration-200 tracking-tight">
-                  @modul_bino
+                  @modulbino
                 </div>
               </div>
             </a>

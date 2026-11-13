@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useLanguage } from "@/context/LanguageContext";
 
 const setMetaTag = (attrName: "name" | "property", attrValue: string, content: string) => {
@@ -29,10 +30,30 @@ const setLinkTag = (rel: string, href: string, hreflang?: string) => {
 
 export const useSEO = () => {
   const { t, language } = useLanguage();
+  const location = useLocation();
 
   useEffect(() => {
     const siteUrl = window.location.origin;
     const ogImageUrl = `${siteUrl}/favi.png`;
+
+    let langPath = "/";
+    if (location.pathname.startsWith("/ru")) {
+      langPath = "/ru";
+    } else if (location.pathname.startsWith("/en")) {
+      langPath = "/en";
+    } else if (location.pathname.startsWith("/uz")) {
+      langPath = "/uz";
+    } else if (language === "ru") {
+      langPath = "/ru";
+    } else if (language === "en") {
+      langPath = "/en";
+    } else if (location.pathname === "/") {
+      langPath = "/";
+    } else {
+      langPath = `/${language}`;
+    }
+
+    const canonicalUrl = `${siteUrl}${langPath}`;
 
     // 1. Document Title
     document.title = t.seo.title;
@@ -63,23 +84,39 @@ export const useSEO = () => {
     setMetaTag("property", "og:site_name", "Modul Bino");
     setMetaTag("property", "og:title", t.seo.title);
     setMetaTag("property", "og:description", t.seo.description);
-    setMetaTag("property", "og:url", `${siteUrl}/`);
+    setMetaTag("property", "og:url", canonicalUrl);
     setMetaTag("property", "og:image", ogImageUrl);
     setMetaTag("property", "og:image:alt", t.seo.title);
     setMetaTag("property", "og:locale", currentLocale);
 
+    // Update alternate locales
+    const allLocales = [
+      { lang: "uz", locale: "uz_UZ" },
+      { lang: "ru", locale: "ru_RU" },
+      { lang: "en", locale: "en_US" },
+    ];
+    const alternateLocales = allLocales.filter((item) => item.lang !== language);
+    document.querySelectorAll('meta[property="og:locale:alternate"]').forEach((el) => el.remove());
+    alternateLocales.forEach((item) => {
+      const meta = document.createElement("meta");
+      meta.setAttribute("property", "og:locale:alternate");
+      meta.setAttribute("content", item.locale);
+      document.head.appendChild(meta);
+    });
+
     // 5. Twitter Card Meta Tags
     setMetaTag("name", "twitter:card", "summary_large_image");
+    setMetaTag("name", "twitter:url", canonicalUrl);
     setMetaTag("name", "twitter:title", t.seo.title);
     setMetaTag("name", "twitter:description", t.seo.description);
     setMetaTag("name", "twitter:image", ogImageUrl);
     setMetaTag("name", "twitter:image:alt", t.seo.title);
 
     // 6. Canonical & Hreflang Tags
-    setLinkTag("canonical", `${siteUrl}/`);
-    setLinkTag("alternate", `${siteUrl}/`, "uz");
-    setLinkTag("alternate", `${siteUrl}/`, "ru");
-    setLinkTag("alternate", `${siteUrl}/`, "en");
+    setLinkTag("canonical", canonicalUrl);
+    setLinkTag("alternate", `${siteUrl}/uz`, "uz");
+    setLinkTag("alternate", `${siteUrl}/ru`, "ru");
+    setLinkTag("alternate", `${siteUrl}/en`, "en");
     setLinkTag("alternate", `${siteUrl}/`, "x-default");
 
     // 7. Update HTML lang attribute
@@ -176,7 +213,7 @@ export const useSEO = () => {
             },
           ],
           sameAs: [
-            "https://www.instagram.com/modul_bino/",
+            "https://www.instagram.com/modulbino/",
             "https://module-homes.netlify.app/",
           ],
           areaServed: {
@@ -187,7 +224,7 @@ export const useSEO = () => {
         {
           "@type": "WebSite",
           "@id": `${siteUrl}/#website`,
-          url: siteUrl,
+          url: canonicalUrl,
           name: "Modul Bino",
           description: t.seo.description,
           publisher: {
@@ -216,7 +253,7 @@ export const useSEO = () => {
       ],
     };
 
-    let jsonLdScript = document.querySelector('script[type="application/ld+json"]');
+    const jsonLdScript = document.querySelector('script[type="application/ld+json"]');
     if (jsonLdScript) {
       jsonLdScript.textContent = JSON.stringify(jsonLdData);
     } else {
@@ -225,5 +262,5 @@ export const useSEO = () => {
       newJsonLdScript.textContent = JSON.stringify(jsonLdData);
       document.head.appendChild(newJsonLdScript);
     }
-  }, [t, language]);
+  }, [t, language, location.pathname]);
 };

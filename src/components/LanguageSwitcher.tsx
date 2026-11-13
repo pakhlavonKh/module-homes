@@ -35,7 +35,9 @@ const LanguageSwitcher = ({ transparent = false }: LanguageSwitcherProps) => {
       {LANGS.map((lang) => (
         <button
           key={lang}
+          type="button"
           onClick={() => setLanguage(lang)}
+          aria-label={`Switch language to ${lang.toUpperCase()}`}
           className={`relative z-10 w-8 h-7 flex items-center justify-center text-[11px] sm:text-xs font-semibold uppercase transition-colors duration-200 rounded-full cursor-pointer ${
             language === lang
               ? transparent

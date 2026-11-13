@@ -1,4 +1,3 @@
-import { LanguageProvider } from "@/context/LanguageContext";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ProductsSection from "@/components/ProductsSection";
@@ -7,9 +6,9 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 
-const IndexContent = () => {
+const Index = () => {
   useSEO();
-  
+
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
@@ -21,11 +20,5 @@ const IndexContent = () => {
     </div>
   );
 };
-
-const Index = () => (
-  <LanguageProvider>
-    <IndexContent />
-  </LanguageProvider>
-);
 
 export default Index;
