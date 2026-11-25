@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      maxWidth: {
+        site: "var(--site-max-width)",
+      },
       fontFamily: {
         heading: ["Montserrat", "sans-serif"],
         body: ["DM Sans", "Inter", "sans-serif"],

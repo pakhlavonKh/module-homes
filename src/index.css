@@ -10,7 +10,23 @@
     scroll-behavior: smooth;
   }
 
+  /*
+   * Large screens (16" laptops, desktop monitors, ultra-wide, 4K):
+   * all sizes are in rem, so growing the root font size scales the whole
+   * layout. It follows the viewport width, but is also limited by the height
+   * so short ultra-wide screens still fit the first screen. Up to 1440px the
+   * browser default (16px) is kept and the layout is unchanged.
+   */
+  @media (min-width: 1440px) {
+    html {
+      font-size: clamp(1rem, min(0.6375rem + 0.4vw, 0.75rem + 0.685vh), 1.5rem);
+    }
+  }
+
   :root {
+    /* Content width: 1280px on regular screens, ~88% of the screen on wider ones. */
+    --site-max-width: max(80rem, min(88vw, 112rem));
+
     --bg: #F5F7F2;
     --ink: #0B2E17;
     --text: #3F5247;

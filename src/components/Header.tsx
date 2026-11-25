@@ -50,10 +50,10 @@ const Header = () => {
   ];
 
   const navLinks = [
-    { label: t.nav.home, href: "#hero", minW: "min-w-[88px]" },
-    { label: t.nav.products, href: "#products", minW: "min-w-[88px]" },
-    { label: t.nav.about, href: "#about", minW: "min-w-[108px]" },
-    { label: t.nav.contact, href: "#contact", minW: "min-w-[76px]" },
+    { label: t.nav.home, href: "#hero", minW: "min-w-[5.5rem]" },
+    { label: t.nav.products, href: "#products", minW: "min-w-[5.5rem]" },
+    { label: t.nav.about, href: "#about", minW: "min-w-[6.75rem]" },
+    { label: t.nav.contact, href: "#contact", minW: "min-w-[4.75rem]" },
   ];
 
   return (
@@ -63,7 +63,7 @@ const Header = () => {
     >
       {/* Floating White Pill Bar */}
       <div
-        className={`w-full max-w-[1280px] mx-auto rounded-full backdrop-blur-xl border pointer-events-auto transition-all duration-300 ${
+        className={`w-full max-w-site mx-auto rounded-full backdrop-blur-xl border pointer-events-auto transition-all duration-300 ${
           scrolled || open
             ? "bg-white/95 border-[#0B2E17]/[0.12] shadow-[0_12px_36px_rgba(11,46,23,0.1)]"
             : "bg-white/80 border-[#0B2E17]/[0.08] shadow-[0_8px_30px_rgba(11,46,23,0.06)]"
@@ -154,7 +154,7 @@ const Header = () => {
             animate={{ height: "auto", opacity: 1, y: 0 }}
             exit={{ height: 0, opacity: 0, y: -10 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="lg:hidden max-w-[1280px] mx-auto mt-2 rounded-2xl backdrop-blur-2xl bg-white/95 border border-[#0B2E17]/[0.08] shadow-2xl overflow-hidden pointer-events-auto"
+            className="lg:hidden max-w-site mx-auto mt-2 rounded-2xl backdrop-blur-2xl bg-white/95 border border-[#0B2E17]/[0.08] shadow-2xl overflow-hidden pointer-events-auto"
           >
             <div className="p-4 flex flex-col gap-1">
               {navLinks.map((link) => (

@@ -8,9 +8,10 @@ interface LanguageSwitcherProps {
 }
 
 const LANGS: Language[] = ["uz", "ru", "en"];
-// Compact pill: 32px per button, 4px container padding
-const PILL_W = 32;
-const CONTAINER_PAD = 4; // p-1 = 4px
+// Compact pill: one button wide (w-8 = 2rem), inside the container's p-1 (0.25rem).
+// Sizes are in rem and the offset in % of the pill, so it stays aligned when the layout scales.
+const PILL_W = "2rem";
+const CONTAINER_PAD = "0.25rem";
 
 const LanguageSwitcher = ({ transparent = false }: LanguageSwitcherProps) => {
   const { language, setLanguage, t } = useLanguage();
@@ -28,7 +29,7 @@ const LanguageSwitcher = ({ transparent = false }: LanguageSwitcherProps) => {
           transparent ? "bg-white" : "bg-[#0B2E17]"
         }`}
         style={{ width: PILL_W, left: CONTAINER_PAD }}
-        animate={{ x: activeIndex * PILL_W }}
+        animate={{ x: `${activeIndex * 100}%` }}
         transition={{ type: "spring", stiffness: 420, damping: 32 }}
       />
 
@@ -38,7 +39,7 @@ const LanguageSwitcher = ({ transparent = false }: LanguageSwitcherProps) => {
           type="button"
           onClick={() => setLanguage(lang)}
           aria-label={t.common.switchLanguage[lang]}
-          className={`relative z-10 w-8 h-7 flex items-center justify-center text-[11px] sm:text-xs font-semibold uppercase transition-colors duration-200 rounded-full cursor-pointer ${
+          className={`relative z-10 w-8 h-7 flex items-center justify-center text-[0.6875rem] sm:text-xs font-semibold uppercase transition-colors duration-200 rounded-full cursor-pointer ${
             language === lang
               ? transparent
                 ? "text-[#0B2E17]"

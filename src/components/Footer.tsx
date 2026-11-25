@@ -30,11 +30,11 @@ const Footer = () => {
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
+          backgroundSize: "3rem 3rem",
         }}
       />
 
-      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full max-w-site mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Compact Light Pre-footer CTA Card with readable font */}
         <div className="relative bg-card text-foreground rounded-2xl p-6 md:p-8 mb-10 md:mb-12 card-shadow border border-border overflow-hidden">
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-5">

@@ -14,11 +14,11 @@ const AboutSection = () => {
       {/* Subtle background texture */}
       <div className="absolute inset-0 dot-pattern opacity-60 pointer-events-none" />
 
-      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full max-w-site mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
           {/* Left column — Intro & Why Metal */}
           <div className="lg:col-span-6 flex flex-col justify-center">
-            <div className="inline-flex items-center gap-2.5 text-accent font-semibold text-[11px] uppercase tracking-[0.2em] mb-2.5">
+            <div className="inline-flex items-center gap-2.5 text-accent font-semibold text-[0.6875rem] uppercase tracking-[0.2em] mb-2.5">
               <span className="w-6 h-px bg-accent/60 inline-block" />
               <span>{t.about.badge}</span>
             </div>
@@ -41,7 +41,7 @@ const AboutSection = () => {
                 {t.about.whyMetal.items.map((item, i) => (
                   <li
                     key={i}
-                    className="flex items-center gap-2.5 text-xs sm:text-[13px] text-muted-foreground/90 font-medium"
+                    className="flex items-center gap-2.5 text-xs sm:text-[0.8125rem] text-muted-foreground/90 font-medium"
                   >
                     <CheckCircle className="w-3.5 h-3.5 text-accent flex-shrink-0 stroke-[2]" />
                     <span>{item}</span>
@@ -59,7 +59,7 @@ const AboutSection = () => {
                 return (
                   <div
                     key={f.title}
-                    className="group bg-background rounded-xl md:rounded-2xl p-5 sm:p-6 border border-border/80 shadow-[0_2px_12px_-2px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_20px_-4px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between min-h-[140px] sm:min-h-[155px] lg:min-h-[165px]"
+                    className="group bg-background rounded-xl md:rounded-2xl p-5 sm:p-6 border border-border/80 shadow-[0_2px_12px_-2px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_20px_-4px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between min-h-[8.75rem] sm:min-h-[9.6875rem] lg:min-h-[10.3125rem]"
                   >
                     <div>
                       {/* Icon */}
@@ -69,7 +69,7 @@ const AboutSection = () => {
                       <h3 className="font-heading font-bold text-sm sm:text-base text-foreground mb-1 group-hover:text-accent transition-colors duration-200 tracking-tight">
                         {f.title}
                       </h3>
-                      <p className="text-xs sm:text-[13px] text-muted-foreground leading-relaxed">
+                      <p className="text-xs sm:text-[0.8125rem] text-muted-foreground leading-relaxed">
                         {f.desc}
                       </p>
                     </div>

@@ -68,7 +68,7 @@ const ProductCard = ({
 
           {/* Tag chip */}
           {tag && (
-            <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold border border-white/20">
+            <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[0.6875rem] font-semibold border border-white/20">
               {tag}
             </span>
           )}
@@ -107,7 +107,7 @@ const ProductCard = ({
         >
           {/* Left Column: Image Viewer */}
           <div className="w-full md:w-[48%] flex flex-col bg-white md:border-r border-border/70 flex-shrink-0 relative overflow-hidden">
-            <div className="relative w-full h-64 sm:h-72 md:h-full md:min-h-[420px] bg-white flex items-center justify-center overflow-hidden p-2 sm:p-4">
+            <div className="relative w-full h-64 sm:h-72 md:h-full md:min-h-[26.25rem] bg-white flex items-center justify-center overflow-hidden p-2 sm:p-4">
               <img
                 src={allImages[activeImgIndex]}
                 alt={photoAlt(activeImgIndex)}
@@ -194,7 +194,7 @@ const ProductCard = ({
                   </h4>
                   <ul className="space-y-2">
                     {features.map((feat, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-foreground/90 leading-relaxed">
+                      <li key={i} className="flex items-start gap-2.5 text-xs sm:text-[0.8125rem] text-foreground/90 leading-relaxed">
                         <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5 stroke-[2]" />
                         <span>{feat}</span>
                       </li>

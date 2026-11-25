@@ -52,7 +52,7 @@ const ProductsSection = () => {
       {/* Subtle top divider */}
       <div className="section-divider mb-0" />
 
-      <div className="w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-site mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 md:mb-12">
           <span className="inline-flex items-center gap-2 text-accent font-semibold text-xs uppercase tracking-[0.2em] mb-3">
             <span className="w-6 h-px bg-accent inline-block" />
