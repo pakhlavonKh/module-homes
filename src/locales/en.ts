@@ -8,6 +8,38 @@ export const en: TranslationType = {
     keywords:
       "modular construction uzbekistan, prefabricated homes tashkent, modular buildings, mobile office containers, industrial metal buildings, prefabricated bathrooms",
     image: "/favi.png",
+    alternateName: "Modular Construction",
+    city: "Tashkent",
+    country: "Uzbekistan",
+    faq: [
+      {
+        question: "How long does modular building construction take?",
+        answer:
+          "Modular structures are prefabricated in factory conditions and assembled on-site in approximately 2 to 4 weeks.",
+      },
+      {
+        question: "What warranty is provided on modular buildings?",
+        answer:
+          "Modul Bino provides an official warranty of up to 10 years on all metal frame and modular structures.",
+      },
+      {
+        question: "How earthquake-resistant are metal frame modular buildings?",
+        answer:
+          "Steel frame modular buildings are flexible and robust, capable of withstanding seismic activity up to magnitude 9.",
+      },
+    ],
+  },
+  common: {
+    logoAlt: "Modul Bino — Modern Modular Construction",
+    menu: "Menu",
+    close: "Close",
+    loading: "Loading...",
+    backToTop: "Back to top",
+    switchLanguage: {
+      uz: "Switch language to Uzbek",
+      ru: "Switch language to Russian",
+      en: "Switch language to English",
+    },
   },
   nav: {
     home: "Home",
@@ -24,38 +56,62 @@ export const en: TranslationType = {
       "Mobile homes, office buildings, industrial facilities, and prefabricated bathroom units — fast, quality, and affordable.",
     viewProducts: "View Products",
     contactUs: "Contact Us",
+    imageAlt: "Modern modular building by Modul Bino",
+    stats: {
+      projects: "Completed Projects",
+      experience: "Years Experience",
+      productTypes: "Product Types",
+      warranty: "Warranty",
+    },
+    cards: {
+      range: { title: "9 Product Types", subtitle: "Full Range" },
+      delivery: { title: "Fast Delivery", subtitle: "In 2-4 Weeks" },
+    },
   },
   products: {
     badge: "Products",
     title: "Our Services",
+    subtitle: "Modern modular buildings and metal structures for any need",
+    details: "Details",
+    consultation: "Get a consultation",
+    advantages: "Key advantages",
+    photo: "photo",
+    previousPhoto: "Previous photo",
+    nextPhoto: "Next photo",
     items: [
       {
         title: "Mobile homes",
+        tag: "Mobile",
         description:
           "Quick to install, convenient and modern mobile homes. Adaptable to any conditions.",
       },
       {
         title: "Single-story houses",
+        tag: "Single-story",
         description:
           "Modern single-story residential houses built with modular technology.",
       },
       {
         title: "Two-story houses",
+        tag: "Two-story",
         description:
           "Spacious and cozy two-story modular homes — the ideal choice for families.",
       },
       {
         title: "Office buildings",
+        tag: "Office",
         description:
           "Modern design modular office buildings. Fast construction with quality guarantee.",
       },
       {
         title: "Industrial buildings",
+        tag: "Industrial",
         description:
           "Durable industrial facilities designed for manufacturing and warehousing.",
       },
       {
         title: "Prefabricated bathroom units",
+        tag: "Bathroom",
         description:
           "Fully equipped modular sanitary units — quick installation at affordable prices.",
       },
@@ -136,12 +192,26 @@ export const en: TranslationType = {
     phone: "Phone",
     email: "Email",
     address: "Address",
-    addressValue: "Shayhontohur District, Jangoh Street, 2",
+    addressDistrict: "Shayhontohur District",
+    addressStreet: "Jangoh Street, 2",
     instagram: "Instagram",
     website: "Website",
   },
   footer: {
     rights: "All rights reserved.",
     slogan: "Quality is our main principle.",
+    description:
+      "Design and construction of mobile homes, offices, industrial facilities and modular bathroom units.",
+    ctaBadge: "Have a project?",
+    ctaTitle: "Planning to build a modern modular building?",
+    ctaText: "Contact us to get a free consultation and cost estimate.",
+    ctaButton: "Contact Us",
+    sectionsTitle: "Sections",
+    contactTitle: "Contact",
+    tagline: "Modern modular construction",
+  },
+  notFound: {
+    message: "Oops! Page not found",
+    backHome: "Return to Home",
   },
 };

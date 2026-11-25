@@ -70,10 +70,10 @@ const Header = () => {
         } flex items-center justify-between h-13 sm:h-14 md:h-16 px-3.5 sm:px-5 md:px-6`}
       >
         {/* Brand Logo (Colour version for light background) */}
-        <a href="#hero" aria-label="Modul Bino — Bosh sahifa" className="flex items-center gap-2 group flex-shrink-0">
+        <a href="#hero" aria-label={`Modul Bino — ${t.nav.home}`} className="flex items-center gap-2 group flex-shrink-0">
           <img
             src={logo}
-            alt="Modul Bino — Zamonaviy Modul Qurilish"
+            alt={t.common.logoAlt}
             className="h-6 sm:h-8 md:h-9 w-auto transition-all duration-300 group-hover:scale-105"
             width="140"
             height="36"
@@ -137,7 +137,7 @@ const Header = () => {
         <div className="flex items-center gap-3 lg:hidden">
           <LanguageSwitcher transparent={false} />
           <button
-            aria-label="Menyu"
+            aria-label={t.common.menu}
             className="p-1.5 rounded-lg text-[#0B2E17] hover:bg-[#0B2E17]/[0.06] transition-colors cursor-pointer"
             onClick={() => setOpen(!open)}
           >

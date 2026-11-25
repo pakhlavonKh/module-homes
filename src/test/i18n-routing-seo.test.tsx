@@ -143,8 +143,8 @@ describe("Language Context and SEO integration", () => {
 
     expect(screen.getByTestId("current-lang").textContent).toBe("uz");
 
-    // Click EN
-    const enButton = screen.getByRole("button", { name: /switch language to en/i });
+    // Click EN (button labels are in the current page language)
+    const enButton = screen.getByRole("button", { name: uz.common.switchLanguage.en });
     act(() => {
       fireEvent.click(enButton);
     });
@@ -158,7 +158,7 @@ describe("Language Context and SEO integration", () => {
     expect(ogLocale?.getAttribute("content")).toBe("en_US");
 
     // Click RU
-    const ruButton = screen.getByRole("button", { name: /switch language to ru/i });
+    const ruButton = screen.getByRole("button", { name: en.common.switchLanguage.ru });
     act(() => {
       fireEvent.click(ruButton);
     });
@@ -169,7 +169,7 @@ describe("Language Context and SEO integration", () => {
     expect(localStorage.getItem("user_lang")).toBe("ru");
 
     // Click UZ
-    const uzButton = screen.getByRole("button", { name: /switch language to uz/i });
+    const uzButton = screen.getByRole("button", { name: ru.common.switchLanguage.uz });
     act(() => {
       fireEvent.click(uzButton);
     });

@@ -17,9 +17,9 @@ const Footer = () => {
   ];
 
   const socials = [
-    { icon: Phone, href: "tel:+998998635050", label: "Telefon" },
-    { icon: Instagram, href: "https://www.instagram.com/modulbino/", label: "Instagram" },
-    { icon: Globe, href: "https://module-homes.netlify.app/", label: "Veb-sayt" },
+    { icon: Phone, href: "tel:+998998635050", label: t.contact.phone },
+    { icon: Instagram, href: "https://www.instagram.com/modulbino/", label: t.contact.instagram },
+    { icon: Globe, href: "https://module-homes.netlify.app/", label: t.contact.website },
   ];
 
   return (
@@ -40,13 +40,13 @@ const Footer = () => {
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-5">
             <div className="text-center md:text-left max-w-xl">
               <span className="inline-block px-3 py-0.5 rounded-full bg-accent/10 text-accent text-xs font-semibold uppercase tracking-wider mb-2 border border-accent/20">
-                Loyihangiz bormi?
+                {t.footer.ctaBadge}
               </span>
               <h3 className="text-2xl md:text-3xl font-heading font-black text-foreground tracking-tight">
-                Zamonaviy modul bino qurishni rejalashtiryapsizmi?
+                {t.footer.ctaTitle}
               </h3>
               <p className="text-muted-foreground text-sm md:text-base mt-1.5 font-normal leading-relaxed">
-                Biz bilan bog'laning va bepul konsultatsiya hamda hisob-kitobga ega bo'ling.
+                {t.footer.ctaText}
               </p>
             </div>
 
@@ -55,7 +55,7 @@ const Footer = () => {
                 href="#contact"
                 className="hero-gradient text-primary-foreground px-6 py-3 rounded-full font-heading font-bold text-sm shadow hover:scale-105 transition-all duration-300 flex items-center gap-2"
               >
-                <span>Biz bilan bog'lanish</span>
+                <span>{t.footer.ctaButton}</span>
                 <ChevronRight className="w-4 h-4" />
               </a>
               <a
@@ -73,10 +73,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-6 border-b border-primary-foreground/20">
           {/* Col 1: Brand Info (5 cols) */}
           <div className="lg:col-span-5 space-y-3">
-            <a href="#hero" aria-label="Modul Bino — Bosh sahifa" className="inline-block group">
+            <a href="#hero" aria-label={`Modul Bino — ${t.nav.home}`} className="inline-block group">
               <img
                 src={logo}
-                alt="Modul Bino — Zamonaviy Modul Qurilish"
+                alt={t.common.logoAlt}
                 className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
                 width="140"
                 height="40"
@@ -85,7 +85,7 @@ const Footer = () => {
               />
             </a>
             <p className="text-primary-foreground/85 text-sm leading-relaxed max-w-sm font-normal">
-              {t.footer.slogan}. Ko'chma uylar, ofislar, sanoat inshootlari va modul sanuzllarni loyihalash hamda qurish xizmati.
+              {t.footer.slogan} {t.footer.description}
             </p>
 
             <div className="pt-1 flex items-center gap-3">
@@ -107,7 +107,7 @@ const Footer = () => {
           {/* Col 2: Navigation Links (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="font-heading font-bold text-sm text-primary-foreground uppercase tracking-wider">
-              Bo'limlar
+              {t.footer.sectionsTitle}
             </h4>
             <ul className="space-y-2">
               {navLinks.map((link) => (
@@ -127,12 +127,14 @@ const Footer = () => {
           {/* Col 3: Contact details (4 cols) */}
           <div className="lg:col-span-4 space-y-3">
             <h4 className="font-heading font-bold text-sm text-primary-foreground uppercase tracking-wider">
-              Bog'lanish
+              {t.footer.contactTitle}
             </h4>
             <div className="space-y-2.5 text-sm text-primary-foreground/85">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-primary-foreground flex-shrink-0 mt-0.5" />
-                <span>Shayhontohur tumani, Jangoh dahasi, 2</span>
+                <span>
+                  {t.contact.addressDistrict}, {t.contact.addressStreet}
+                </span>
               </div>
               <div className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 text-primary-foreground flex-shrink-0 mt-0.5" />
@@ -160,12 +162,12 @@ const Footer = () => {
           <p>© 2026 Modul Bino. {t.footer.rights}</p>
 
           <div className="flex items-center gap-4">
-            <span className="font-medium">Zamonaviy modul qurilish</span>
+            <span className="font-medium">{t.footer.tagline}</span>
 
             {/* Back to top button */}
             <button
               onClick={scrollToTop}
-              aria-label="Yuqoriga qaytish"
+              aria-label={t.common.backToTop}
               className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
             >
               <ArrowUp className="w-4 h-4" />

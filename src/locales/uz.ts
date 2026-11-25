@@ -8,6 +8,38 @@ export const uz: TranslationType = {
     keywords:
       "modul qurilish, modul bino, ko'chma uylar, modul ofis, metall konstruksiya, sanoat binolari, modul sanuzel, modul uylar narxi toshkent",
     image: "/favi.png",
+    alternateName: "Modul Qurilish",
+    city: "Toshkent",
+    country: "O'zbekiston",
+    faq: [
+      {
+        question: "Modul bino qancha vaqtda qurib bitkaziladi?",
+        answer:
+          "Modul binolar zavod sharoitida tayyorlanib, ob'ektga yetkaziladi va o'rtacha 2-4 hafta ichida to'liq montaj qilib topshiriladi.",
+      },
+      {
+        question: "Modul binolarga qancha muddat kafolat beriladi?",
+        answer:
+          "Modul Bino barcha metall konstruksiya va modul binolarga 10 yilgacha rasmiy kafolat beradi.",
+      },
+      {
+        question: "Metall konstruksiyali modul binolar zilzilaga chidamliligi qanday?",
+        answer:
+          "Metall karkasli modul konstruksiyalar elastik va mustahkam bo'lib, 9 ballgacha bo'lgan seysmik zilzilalarga bardosh beradi.",
+      },
+    ],
+  },
+  common: {
+    logoAlt: "Modul Bino — Zamonaviy Modul Qurilish",
+    menu: "Menyu",
+    close: "Yopish",
+    loading: "Yuklanmoqda...",
+    backToTop: "Yuqoriga qaytish",
+    switchLanguage: {
+      uz: "O'zbek tiliga o'tish",
+      ru: "Rus tiliga o'tish",
+      en: "Ingliz tiliga o'tish",
+    },
   },
   nav: {
     home: "Bosh sahifa",
@@ -24,38 +56,62 @@ export const uz: TranslationType = {
       "Ko'chma uylar, ofis binolari, sanoat inshootlari va modul sanuzllar — tez, sifatli va arzon narxlarda.",
     viewProducts: "Mahsulotlarni ko'rish",
     contactUs: "Biz bilan bog'lanish",
+    imageAlt: "Modul Bino zamonaviy bino",
+    stats: {
+      projects: "Loyihalar",
+      experience: "Yillik tajriba",
+      productTypes: "Mahsulot turi",
+      warranty: "Kafolat",
+    },
+    cards: {
+      range: { title: "9 mahsulot turi", subtitle: "Keng assortiment" },
+      delivery: { title: "Tez yetkazib berish", subtitle: "2-4 hafta ichida" },
+    },
   },
   products: {
     badge: "Mahsulotlar",
     title: "Bizning xizmatlar",
+    subtitle: "Har qanday ehtiyoj uchun zamonaviy modul binolar va metall konstruksiyalar",
+    details: "Batafsil",
+    consultation: "Bog'lanish",
+    advantages: "Asosiy afzalliklari",
+    photo: "foto",
+    previousPhoto: "Oldingi foto",
+    nextPhoto: "Keyingi foto",
     items: [
       {
         title: "Ko'chma uylar",
+        tag: "Ko'chma",
         description:
           "Tez o'rnatiladigan, qulay va zamonaviy ko'chma uylar. Har qanday sharoitga moslashtiriladi.",
       },
       {
         title: "Bir qavatli uylar",
+        tag: "Bir qavatli",
         description:
           "Modul texnologiyasi asosida qurilgan zamonaviy bir qavatli yashash uylari.",
       },
       {
         title: "Ikki qavatli uylar",
+        tag: "Ikki qavatli",
         description:
           "Keng va shinam ikki qavatli modul uylar — oila uchun ideal tanlov.",
       },
       {
         title: "Ofis binolari",
+        tag: "Ofis",
         description:
           "Zamonaviy dizaynli modul ofis binolari. Tez qurish va yuqori sifat kafolati.",
       },
       {
         title: "Sanoat binolari",
+        tag: "Sanoat",
         description:
           "Ishlab chiqarish va ombor uchun mo'ljallangan mustahkam sanoat inshootlari.",
       },
       {
         title: "Modul sanuzel",
+        tag: "Sanuzel",
         description:
           "To'liq jihozlangan tayyor modul sanitary uzellari — tez o'rnatish va arzon narx.",
       },
@@ -136,12 +192,26 @@ export const uz: TranslationType = {
     phone: "Telefon",
     email: "Email",
     address: "Manzil",
-    addressValue: "Shayhontohur tumani, Jangoh dahasi, 2",
+    addressDistrict: "Shayhontohur tumani",
+    addressStreet: "Jangoh dahasi, 2",
     instagram: "Instagram",
     website: "Veb-sayt",
   },
   footer: {
     rights: "Barcha huquqlar himoyalangan.",
     slogan: "Sifat — bizning asosiy tamoyilimiz.",
+    description:
+      "Ko'chma uylar, ofislar, sanoat inshootlari va modul sanuzllarni loyihalash hamda qurish xizmati.",
+    ctaBadge: "Loyihangiz bormi?",
+    ctaTitle: "Zamonaviy modul bino qurishni rejalashtiryapsizmi?",
+    ctaText: "Biz bilan bog'laning va bepul konsultatsiya hamda hisob-kitobga ega bo'ling.",
+    ctaButton: "Biz bilan bog'lanish",
+    sectionsTitle: "Bo'limlar",
+    contactTitle: "Bog'lanish",
+    tagline: "Zamonaviy modul qurilish",
+  },
+  notFound: {
+    message: "Kechirasiz, sahifa topilmadi",
+    backHome: "Bosh sahifaga qaytish",
   },
 };

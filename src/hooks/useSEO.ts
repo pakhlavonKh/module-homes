@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useLanguage } from "@/context/LanguageContext";
+import { Language } from "@/lib/i18n";
+import { buildStructuredData, OG_LOCALES } from "@/lib/seo";
 
 const setMetaTag = (attrName: "name" | "property", attrValue: string, content: string) => {
   let element = document.querySelector(`meta[${attrName}="${attrValue}"]`);
@@ -73,36 +75,25 @@ export const useSEO = () => {
     setMetaTag("name", "ICBM", "41.3275, 69.2401");
 
     // 4. Open Graph Meta Tags
-    const ogLocaleMap: Record<string, string> = {
-      uz: "uz_UZ",
-      ru: "ru_RU",
-      en: "en_US",
-    };
-    const currentLocale = ogLocaleMap[language] || "uz_UZ";
-
     setMetaTag("property", "og:type", "website");
     setMetaTag("property", "og:site_name", "Modul Bino");
     setMetaTag("property", "og:title", t.seo.title);
     setMetaTag("property", "og:description", t.seo.description);
     setMetaTag("property", "og:url", canonicalUrl);
     setMetaTag("property", "og:image", ogImageUrl);
-    setMetaTag("property", "og:image:alt", t.seo.title);
-    setMetaTag("property", "og:locale", currentLocale);
+    setMetaTag("property", "og:image:alt", t.common.logoAlt);
+    setMetaTag("property", "og:locale", OG_LOCALES[language]);
 
     // Update alternate locales
-    const allLocales = [
-      { lang: "uz", locale: "uz_UZ" },
-      { lang: "ru", locale: "ru_RU" },
-      { lang: "en", locale: "en_US" },
-    ];
-    const alternateLocales = allLocales.filter((item) => item.lang !== language);
     document.querySelectorAll('meta[property="og:locale:alternate"]').forEach((el) => el.remove());
-    alternateLocales.forEach((item) => {
-      const meta = document.createElement("meta");
-      meta.setAttribute("property", "og:locale:alternate");
-      meta.setAttribute("content", item.locale);
-      document.head.appendChild(meta);
-    });
+    (Object.keys(OG_LOCALES) as Language[])
+      .filter((lang) => lang !== language)
+      .forEach((lang) => {
+        const meta = document.createElement("meta");
+        meta.setAttribute("property", "og:locale:alternate");
+        meta.setAttribute("content", OG_LOCALES[lang]);
+        document.head.appendChild(meta);
+      });
 
     // 5. Twitter Card Meta Tags
     setMetaTag("name", "twitter:card", "summary_large_image");
@@ -110,7 +101,7 @@ export const useSEO = () => {
     setMetaTag("name", "twitter:title", t.seo.title);
     setMetaTag("name", "twitter:description", t.seo.description);
     setMetaTag("name", "twitter:image", ogImageUrl);
-    setMetaTag("name", "twitter:image:alt", t.seo.title);
+    setMetaTag("name", "twitter:image:alt", t.common.logoAlt);
 
     // 6. Canonical & Hreflang Tags
     setLinkTag("canonical", canonicalUrl);
@@ -122,144 +113,16 @@ export const useSEO = () => {
     // 7. Update HTML lang attribute
     document.documentElement.lang = language;
 
-    // 8. Dynamic Localized JSON-LD Structured Data (Schema.org)
-    const localizedServices = t.products.items.map((item) => ({
-      "@type": "Offer",
-      itemOffered: {
-        "@type": "Service",
-        name: item.title,
-        description: item.description,
-      },
-    }));
-
-    const faqContent =
-      language === "ru"
-        ? [
-            {
-              q: "Сколько времени занимает строительство модульного здания?",
-              a: "Модульные здания изготавливаются на заводе и доставляются на объект. Монтаж занимает в среднем от 2 до 4 недель.",
-            },
-            {
-              q: "Какая гарантия предоставляется на модульные здания?",
-              a: "Компания Modul Bino предоставляет официальную гарантию до 10 лет на все металлоконструкции и модульные строения.",
-            },
-            {
-              q: "Какова сейсмостойкость модульных зданий из металлоконструкций?",
-              a: "Модульные здания на металлокаркасе обладают высокой прочностью и эластичностью, выдерживая сейсмические нагрузки до 9 баллов.",
-            },
-          ]
-        : language === "en"
-        ? [
-            {
-              q: "How long does modular building construction take?",
-              a: "Modular structures are prefabricated in factory conditions and assembled on-site in approximately 2 to 4 weeks.",
-            },
-            {
-              q: "What warranty is provided on modular buildings?",
-              a: "Modul Bino provides an official warranty of up to 10 years on all metal frame and modular structures.",
-            },
-            {
-              q: "How earthquake-resistant are metal frame modular buildings?",
-              a: "Steel frame modular buildings are flexible and robust, capable of withstanding seismic activity up to magnitude 9.",
-            },
-          ]
-        : [
-            {
-              q: "Modul bino qancha vaqtda qurib bitkaziladi?",
-              a: "Modul binolar zavod sharoitida tayyorlanib, ob'ektga yetkaziladi va o'rtacha 2-4 hafta ichida to'liq montaj qilib topshiriladi.",
-            },
-            {
-              q: "Modul binolarga qancha muddat kafolat beriladi?",
-              a: "Modul Bino barcha metall konstruksiya va modul binolarga 10 yilgacha rasmiy kafolat beradi.",
-            },
-            {
-              q: "Metall konstruksiyali modul binolar zilzilaga chidamliligi qanday?",
-              a: "Metall karkasli modul konstruksiyalar elastik va mustahkam bo'lib, 9 ballgacha bo'lgan seysmik zilzilalarga bardosh beradi.",
-            },
-          ];
-
-    const jsonLdData = {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "HomeAndConstructionBusiness",
-          "@id": `${siteUrl}/#organization`,
-          name: "Modul Bino",
-          alternateName: "Modul Qurilish",
-          url: siteUrl,
-          logo: ogImageUrl,
-          image: ogImageUrl,
-          description: t.seo.description,
-          telephone: "+998998635050",
-          priceRange: "$$",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "Jangoh dahasi, 2",
-            addressLocality: "Toshkent",
-            addressRegion: "Shayhontohur",
-            addressCountry: "UZ",
-          },
-          geo: {
-            "@type": "GeoCoordinates",
-            latitude: 41.3275,
-            longitude: 69.2401,
-          },
-          openingHoursSpecification: [
-            {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-              opens: "09:00",
-              closes: "18:00",
-            },
-          ],
-          sameAs: [
-            "https://www.instagram.com/modulbino/",
-            "https://module-homes.netlify.app/",
-          ],
-          areaServed: {
-            "@type": "Country",
-            name: "Uzbekistan",
-          },
-        },
-        {
-          "@type": "WebSite",
-          "@id": `${siteUrl}/#website`,
-          url: canonicalUrl,
-          name: "Modul Bino",
-          description: t.seo.description,
-          publisher: {
-            "@id": `${siteUrl}/#organization`,
-          },
-          inLanguage: [language],
-        },
-        {
-          "@type": "OfferCatalog",
-          "@id": `${siteUrl}/#services`,
-          name: t.products.title,
-          itemListElement: localizedServices,
-        },
-        {
-          "@type": "FAQPage",
-          "@id": `${siteUrl}/#faq`,
-          mainEntity: faqContent.map((faq) => ({
-            "@type": "Question",
-            name: faq.q,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: faq.a,
-            },
-          })),
-        },
-      ],
-    };
+    // 8. Localized JSON-LD Structured Data (Schema.org) — same builder as the static HTML
+    const jsonLd = JSON.stringify(buildStructuredData({ t, language, siteUrl, pageUrl: canonicalUrl }));
 
     const jsonLdScript = document.querySelector('script[type="application/ld+json"]');
     if (jsonLdScript) {
-      jsonLdScript.textContent = JSON.stringify(jsonLdData);
+      jsonLdScript.textContent = jsonLd;
     } else {
       const newJsonLdScript = document.createElement("script");
       newJsonLdScript.type = "application/ld+json";
-      newJsonLdScript.textContent = JSON.stringify(jsonLdData);
+      newJsonLdScript.textContent = jsonLd;
       document.head.appendChild(newJsonLdScript);
     }
   }, [t, language, location.pathname]);

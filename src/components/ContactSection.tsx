@@ -102,8 +102,10 @@ const ContactSection = () => {
                   <span className="text-xs font-semibold uppercase tracking-wider">{t.contact.address}</span>
                 </div>
                 <div className="font-heading font-semibold text-lg md:text-xl text-foreground leading-snug tracking-tight">
-                  <p>Shayhontohur tumani,</p>
-                  <p className="text-muted-foreground font-medium text-base md:text-lg mt-0.5">Jangoh dahasi, 2</p>
+                  <p>{t.contact.addressDistrict},</p>
+                  <p className="text-muted-foreground font-medium text-base md:text-lg mt-0.5">
+                    {t.contact.addressStreet}
+                  </p>
                 </div>
               </div>
             </div>

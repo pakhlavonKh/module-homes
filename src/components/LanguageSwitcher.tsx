@@ -13,7 +13,7 @@ const PILL_W = 32;
 const CONTAINER_PAD = 4; // p-1 = 4px
 
 const LanguageSwitcher = ({ transparent = false }: LanguageSwitcherProps) => {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   const activeIndex = LANGS.indexOf(language);
 
   return (
@@ -37,7 +37,7 @@ const LanguageSwitcher = ({ transparent = false }: LanguageSwitcherProps) => {
           key={lang}
           type="button"
           onClick={() => setLanguage(lang)}
-          aria-label={`Switch language to ${lang.toUpperCase()}`}
+          aria-label={t.common.switchLanguage[lang]}
           className={`relative z-10 w-8 h-7 flex items-center justify-center text-[11px] sm:text-xs font-semibold uppercase transition-colors duration-200 rounded-full cursor-pointer ${
             language === lang
               ? transparent

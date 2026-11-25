@@ -1,14 +1,19 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { LanguageProvider } from "@/context/LanguageContext";
+import { LanguageProvider, useLanguage } from "@/context/LanguageContext";
 
 const Index = lazy(() => import("./pages/Index"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
+const PageLoader = () => {
+  const { t } = useLanguage();
+  return <div className="flex items-center justify-center h-screen">{t.common.loading}</div>;
+};
+
 const App = () => (
   <BrowserRouter>
     <LanguageProvider>
-      <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
+      <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/uz" element={<Index />} />

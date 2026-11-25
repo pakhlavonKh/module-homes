@@ -5,81 +5,15 @@ import CountUp from "@/components/CountUp";
 import featuredBuildingImg from "@/assets/two-story.webp";
 
 const HeroSection = () => {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const ref = useRef<HTMLElement>(null);
 
-  // Localized stats definitions
   const stats = [
-    {
-      end: 100,
-      suffix: "+",
-      label:
-        language === "ru"
-          ? "Успешных проектов"
-          : language === "en"
-          ? "Completed Projects"
-          : "Loyihalar",
-    },
-    {
-      end: 5,
-      suffix: "+",
-      label:
-        language === "ru"
-          ? "Лет опыта"
-          : language === "en"
-          ? "Years Experience"
-          : "Yillik tajriba",
-    },
-    {
-      end: 9,
-      suffix: "",
-      label:
-        language === "ru"
-          ? "Видов продукции"
-          : language === "en"
-          ? "Product Types"
-          : "Mahsulot turi",
-    },
-    {
-      end: 100,
-      suffix: "%",
-      label:
-        language === "ru"
-          ? "Гарантия качества"
-          : language === "en"
-          ? "Warranty"
-          : "Kafolat",
-    },
+    { end: 100, suffix: "+", label: t.hero.stats.projects },
+    { end: 5, suffix: "+", label: t.hero.stats.experience },
+    { end: 9, suffix: "", label: t.hero.stats.productTypes },
+    { end: 100, suffix: "%", label: t.hero.stats.warranty },
   ];
-
-  // Floating badges translations
-  const badge1Title =
-    language === "ru"
-      ? "9 видов продукции"
-      : language === "en"
-      ? "9 Product Types"
-      : "9 mahsulot turi";
-
-  const badge1Sub =
-    language === "ru"
-      ? "Широкий выбор"
-      : language === "en"
-      ? "Full Range"
-      : "Keng assortiment";
-
-  const badge2Title =
-    language === "ru"
-      ? "Быстрая доставка"
-      : language === "en"
-      ? "Fast Delivery"
-      : "Tez yetkazib berish";
-
-  const badge2Sub =
-    language === "ru"
-      ? "За 2-4 недели"
-      : language === "en"
-      ? "In 2-4 Weeks"
-      : "2-4 hafta ichida";
 
   return (
     <section
@@ -160,7 +94,7 @@ const HeroSection = () => {
             <div className="relative rounded-[28px] overflow-visible shadow-[0_24px_60px_rgba(11,46,23,0.16)] bg-white aspect-[4/3] sm:aspect-[16/11] lg:aspect-[16/10.5] max-h-[340px] xl:max-h-[380px] w-full group">
               <img
                 src={featuredBuildingImg}
-                alt="Modul Bino zamonaviy bino"
+                alt={t.hero.imageAlt}
                 className="w-full h-full object-cover rounded-[28px] group-hover:scale-[1.02] transition-transform duration-700 ease-out"
                 loading="eager"
               />
@@ -174,10 +108,10 @@ const HeroSection = () => {
                 </div>
                 <div>
                   <p className="text-[11px] sm:text-xs font-bold font-heading text-[#0B2E17] leading-tight">
-                    {badge1Title}
+                    {t.hero.cards.range.title}
                   </p>
                   <p className="text-[9px] sm:text-[10px] text-[#3F5247] font-medium mt-0.5">
-                    {badge1Sub}
+                    {t.hero.cards.range.subtitle}
                   </p>
                 </div>
               </div>
@@ -191,10 +125,10 @@ const HeroSection = () => {
                 </div>
                 <div>
                   <p className="text-[11px] sm:text-xs font-bold font-heading text-[#0B2E17] leading-tight">
-                    {badge2Title}
+                    {t.hero.cards.delivery.title}
                   </p>
                   <p className="text-[9px] sm:text-[10px] text-[#3F5247] font-medium mt-0.5">
-                    {badge2Sub}
+                    {t.hero.cards.delivery.subtitle}
                   </p>
                 </div>
               </div>

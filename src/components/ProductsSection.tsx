@@ -44,18 +44,6 @@ const productGalleries: (string[] | undefined)[] = [
   [furniture],
 ];
 
-const fallbackTags = [
-  "Ko'chma",
-  "Bir qavatli",
-  "Ikki qavatli",
-  "Ofis",
-  "Sanoat",
-  "Sanuzel",
-  "Platforma",
-  "Lift",
-  "Mebel",
-];
-
 const ProductsSection = () => {
   const { t } = useLanguage();
 
@@ -75,7 +63,7 @@ const ProductsSection = () => {
             {t.products.title}
           </h2>
           <p className="text-muted-foreground mt-2.5 max-w-lg mx-auto text-sm md:text-base leading-relaxed">
-            Har qanday ehtiyoj uchun zamonaviy modul binolar va metall konstruksiyalar
+            {t.products.subtitle}
           </p>
         </div>
 
@@ -90,7 +78,7 @@ const ProductsSection = () => {
               image={productImages[i] || mobileHome}
               gallery={productGalleries[i]}
               index={i}
-              tag={product.tag || fallbackTags[i]}
+              tag={product.tag}
             />
           ))}
         </div>
