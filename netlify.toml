@@ -3,15 +3,14 @@
   to = "/index.html"
   status = 200
 
+# Only Vite's build output in /assets has content hashes in its file names, so
+# only it may be cached forever. Everything else (the pages /, /uz, /ru, /en,
+# robots.txt, sitemap.xml, files from /public) keeps Netlify's default
+# "public, max-age=0, must-revalidate", so every deploy is visible right away.
 [[headers]]
-  for = "/*"
+  for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/index.html"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/*.js"
